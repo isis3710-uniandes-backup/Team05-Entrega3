@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Home from './Home/Home';
 import Navbar from './Home/Navbar';
@@ -9,7 +11,7 @@ import Login from './Common/Login';
 import Registrarse from './Common/Registrarse';
 
 class App extends Component {
-  state = {  }
+
   render() { 
     return (
       <div>
@@ -22,6 +24,7 @@ class App extends Component {
             <Route component={NotFound} />
           </Switch>
         </div>
+        <ToastContainer autoClose={5000} position={toast.POSITION.BOTTOM_RIGHT} bodyClassName="customBody" />
         <Footer />
       </div>
     );

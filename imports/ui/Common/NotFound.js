@@ -10,8 +10,11 @@ class NotFound extends Component {
                 <h1 className="brown font-weight-bold">404</h1>
                 <h2 className="font-weight-bold">Página no encontrada</h2>
                 <div className="text-center my-2">
-                    <p>La página a la cual intentaste acceder no existe.</p>
-                    <p>¿Quizá escribiste mal la dirección?</p>
+                    <p>
+                        La página a la cual intentaste acceder no existe.
+                        <br/>
+                        ¿Quizá escribiste mal la dirección? 
+                    </p>
                 </div>
             </div>
         );
