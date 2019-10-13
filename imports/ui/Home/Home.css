@@ -11,7 +11,7 @@ a.navbar-brand {
     font-size: 1.5rem;
 }
 span.prefix {
-    color: #49B545;
+    color: #398E36;
 }
 
 /* ESTILOS Footer.js */
@@ -20,4 +20,13 @@ footer {
     background-color: #1C1C1C;
     color: white;
     font-size: 600;
+}
+
+/* ESTILOS Navbar.js */
+nav {
+    font-weight: 500;
+}
+nav.navbar-toggler, .navbar-toggler-icon {
+    color: #696D7D !important;
+    border-color: #696D7D !important;
 }
