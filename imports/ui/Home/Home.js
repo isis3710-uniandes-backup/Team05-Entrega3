@@ -3,12 +3,6 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 
 export default class Home extends Component {
-    
-    constructor() {
-        super();
-
-        this.start = this.start.bind(this);
-    }
 
     /**
      * Revisa si el usuario está registrado para llevarlo a calcular la huella o a loguearse
@@ -25,16 +19,12 @@ export default class Home extends Component {
         );
     }
 
-    start() {
-        console.log('INICIAR! LLEVAR AL LOGIN O A CALCULAR HUELLA SI YA ESTÁ LOGUEADO');
-    }
-
     render() { 
         return (
             <div className="container host d-flex align-items-center">
                 <div className="row align-items-center justify-content-center">
                     <div className="col-12 col-md-6 text-left my-5 my-md-0">
-                        <h2>¡Calcula tu huella y compite con tus amigos!</h2>
+                        <h2 className="font-weight-bold">¡Calcula tu huella y compite con tus amigos!</h2>
                         <p className="py-4 text-muted">
                             La mejor forma de saber cuál es tu huella de carbono de lo que usas a diario.
                         </p>
