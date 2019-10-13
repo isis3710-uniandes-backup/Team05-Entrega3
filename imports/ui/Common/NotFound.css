@@ -1,0 +1,12 @@
+h1 {
+    font-size: 5rem;
+}
+.bold {
+    font-weight: 700;
+}
+.brown {
+    color: #60463B;
+}
+#notfound {
+    width: 150px;
+}

@@ -3,7 +3,13 @@ import './Home.css';
 
 export default class Home extends Component {
     
-    start = () => {
+    constructor() {
+        super();
+
+        this.start = this.start.bind(this);
+    }
+
+    start() {
         console.log('INICIAR! LLEVAR AL LOGIN O A CALCULAR HUELLA SI YA ESTÁ LOGUEADO');
     }
 

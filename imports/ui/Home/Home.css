@@ -3,21 +3,25 @@ img.banner {
     width: 70%;
 }
 a.navbar-brand {
-    color: #8A6552 !important;
+    color: #60463B !important;
     font-weight: 700;
     font-style: normal;
     letter-spacing: 0.1rem;
     line-height: 2rem;
     font-size: 1.5rem;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 }
 span.prefix {
-    color: #398E36;
+    color: #2B6D29;
 }
 
 /* ESTILOS Footer.js */
 footer {
     height: 16vh;
-    background-color: #1C1C1C;
+    background-color: #1E1E24;
     color: white;
     font-size: 600;
 }
@@ -27,6 +31,6 @@ nav {
     font-weight: 500;
 }
 nav.navbar-toggler, .navbar-toggler-icon {
-    color: #696D7D !important;
-    border-color: #696D7D !important;
+    color: #6E7271 !important;
+    border-color: #6E7271 !important;
 }
