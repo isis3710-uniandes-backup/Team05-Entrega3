@@ -1,4 +1,4 @@
-import mongo from "meteor/mongo"
+import { Mongo } from "meteor/mongo"
 
 export default Tips = new Mongo.Collection("tips");
 
