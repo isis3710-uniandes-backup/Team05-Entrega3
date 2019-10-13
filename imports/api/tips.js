@@ -1,6 +1,6 @@
 import mongo from "meteor/mongo"
 
-export default Tips = new mongo.Collection("tips");
+export default Tips = new Mongo.Collection("tips");
 
 function insertTip(descripcion, url) {
     Tips.insert({descripcion, url});
