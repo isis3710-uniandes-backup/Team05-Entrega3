@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 export default class Home extends Component {
@@ -7,6 +8,21 @@ export default class Home extends Component {
         super();
 
         this.start = this.start.bind(this);
+    }
+
+    /**
+     * Revisa si el usuario está registrado para llevarlo a calcular la huella o a loguearse
+     */
+    revisarUsuario() {
+        // La dirección a donde lo manda dependiendo de si está logueado o no 
+        // Se mira si está logueado y se cambia la dirección a donde lo manda
+        let direccion = '/login';
+
+        return (
+            <Link to={direccion}>
+                <button className="but-outline">Inicia Ahora</button>
+            </Link>
+        );
     }
 
     start() {
@@ -23,7 +39,7 @@ export default class Home extends Component {
                             La mejor forma de saber cuál es tu huella de carbono de lo que usas a diario.
                         </p>
                         <div className="d-flex justify-content-end">
-                            <button className="but-outline" onClick={this.start}>Inicia Ahora</button>
+                            {this.revisarUsuario()}
                         </div>                        
                     </div>
                     <div className="col-12 col-md-6 d-flex justify-content-center">

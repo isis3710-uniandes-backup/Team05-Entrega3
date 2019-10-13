@@ -4,7 +4,9 @@ class Login extends Component {
     state = {  }
     render() { 
         return ( 
-            <div>Login !</div>
+            <div className="host">
+                Login !
+            </div>
         );
     }
 }

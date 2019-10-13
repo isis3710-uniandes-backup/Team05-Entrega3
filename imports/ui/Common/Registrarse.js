@@ -4,7 +4,9 @@ class Registrarse extends Component {
     state = {  }
     render() { 
         return ( 
-            <div>Registrarse !</div>
+            <div className="host">
+                Registrarse !
+            </div>
         );
     }
 }
