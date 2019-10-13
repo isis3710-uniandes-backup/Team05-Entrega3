@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import './Home.css';
 
 export default class Home extends Component {
+    
+    start = () => {
+        console.log('INICIAR! LLEVAR AL LOGIN O A CALCULAR HUELLA SI YA ESTÁ LOGUEADO');
+    }
+
     render() { 
         return (
             <div className="container host d-flex align-items-center">
@@ -12,7 +17,7 @@ export default class Home extends Component {
                             La mejor forma de saber cuál es tu huella de carbono de lo que usas a diario.
                         </p>
                         <div className="d-flex justify-content-end">
-                            <button className="but">Inicia Ahora</button>
+                            <button className="but" onClick={this.start}>Inicia Ahora</button>
                         </div>                        
                     </div>
                     <div className="col-12 col-md-6 d-flex justify-content-center">
