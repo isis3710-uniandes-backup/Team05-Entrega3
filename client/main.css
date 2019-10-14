@@ -59,6 +59,13 @@ body {
   background-color: #60463B !important;
   border-color: #60463B !important;
 }
+.but-solid:disabled {
+  color: white !important;
+  background-color: #6E7271 !important;
+  border-color: #6E7271 !important;
+  opacity: 0.5;
+}
+
 a {
   color: #2B6D29 !important;
   transition: all 0.3s ease-out;

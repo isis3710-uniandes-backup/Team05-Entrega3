@@ -6,7 +6,7 @@ class Navbar extends Component {
     render() { 
         return ( 
             <nav className="fixed-top navbar navbar-expand-md bg-white shadow navbar-light">
-                <Link className="navbar-brand d-flex align-items-center ml-3" to="/">
+                <Link className="navbar-brand d-flex align-items-center ml-3" to="/" title="Inicio">
                     <img src="img/leaf.svg" className="d-inline-block mr-2" width="45" height="45" alt="LeafStyle logo" />
                     <span className="prefix">Leaf</span>Style
                 </Link>

@@ -9,11 +9,11 @@ class Evaluacion extends Component {
   }
 
   render() {
-    return (<div>
-      <div>
+    return (
+      <div className="host">
         <Categoria />
       </div>
-    </div>);
+    );
   }
 
 }
