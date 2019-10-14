@@ -9,7 +9,7 @@ import Footer from './Home/Footer';
 import NotFound from './Common/NotFound';
 import Login from './Common/Login';
 import Registrarse from './Common/Registrarse';
-import { Evaluacion } from "./Evaluacion";
+import Evaluacion from "./Evaluacion";
 
 class App extends Component {
 

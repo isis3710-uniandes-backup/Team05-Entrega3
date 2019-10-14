@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import objetos from "../api/objetos.js";
+import { toast } from "react-toastify";
 
 class Objeto extends Component{
 
@@ -20,6 +21,7 @@ class Objeto extends Component{
         var id = objetoNuevo._id;
         objetoNuevo._id = id;
         objetos.update({_id : id},objetoNuevo);
+        toast.success('Agregaste un uso de '+ objetoNuevo.cantidad + " " + objetoNuevo.unidad + " de " + objetoNuevo.nombre);
     }
     render(){
         return (
