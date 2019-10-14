@@ -1,9 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import Links from '/imports/api/links';
-import Categorias from '/imports/api/categorias'
+
 import { insertAll as insertCategorias } from '../imports/api/categorias'
 import { insertAll as insertObjetos } from '../imports/api/objetos';
 import { insertAll as insertTips } from '../imports/api/tips';
+import { insertAll as insertUsuarios } from '../imports/api/usuarios';
 
 function insertLink(title, url) {
   Links.insert({ title, url, createdAt: new Date() });
@@ -37,4 +38,5 @@ Meteor.startup(() => {
   insertCategorias();
   insertObjetos();
   insertTips();
+  insertUsuarios();
 });
