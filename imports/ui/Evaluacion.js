@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import Evaluaciones from "../api/evaluaciones";
 import Categoria from "../ui/Categoria";
+import Objeto from "../ui/Objeto";
 
 class Evaluacion extends Component {
   constructor(props) {
@@ -11,9 +12,22 @@ class Evaluacion extends Component {
   render() {
     return (
       <div className="host">
-        <Categoria />
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
+              <Categoria />
+            </div>
+            <div className="col-6">
+              <button type="button" onClick={calcPuntos(Objeto.state.objetos)}>Calcular</button>
+            </div>
+          </div>
+        </div>
       </div>
     );
+  }
+
+  calcPuntos(objetos){
+    
   }
 
 }
