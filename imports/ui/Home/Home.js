@@ -13,12 +13,10 @@ export default class Home extends Component {
         // La dirección a donde lo manda dependiendo de si está logueado o no 
         // Se mira si está logueado y se cambia la dirección a donde lo manda
         let direccion = '/login';
-        const f = () => {
-            toast.success('Probando el Toast 😎');
-        };
+
         return (
             <Link to={direccion}>
-                <button className="but-outline" onClick={f}>Inicia Ahora</button>
+                <button className="but-outline">Inicia Ahora</button>
             </Link>
         );
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -32,15 +32,23 @@ class App extends Component {
     return this.state.actual;
   }
 
+  requireAuth(nextState, replace) {
+    if (!this.getUsuario()) {
+      replace({
+        pathname: '/login'
+      })
+    }
+  }
+
   render() {
     return (
       <div>
         <div className="container-fluid">
-          <Navbar />
+          <Navbar getUsuario={this.getUsuario} />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" render={(props) => <Login {...props} setUsuario={this.setUsuario} getUsuario={this.getUsuario} /> } />
-            <Route exact path="/registrarse" component={Registrarse} />
+            <Route exact path="/registrarse" render={(props) => <Registrarse {...props} setUsuario={this.setUsuario} getUsuario={this.getUsuario} /> } />
             <Route exact path="/evaluacion" render={(props) => <Evaluacion {...props}/>} />
             <Route component={NotFound} />
           </Switch>
