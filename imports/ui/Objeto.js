@@ -1,6 +1,6 @@
 import React, {Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
-import Objetos from "../api/objetos";
+import Objetos from "../api/objsetos";
 
 class Objeto extends Component{
     

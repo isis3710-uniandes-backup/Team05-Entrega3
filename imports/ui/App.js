@@ -9,6 +9,7 @@ import Footer from './Home/Footer';
 import NotFound from './Common/NotFound';
 import Login from './Common/Login';
 import Registrarse from './Common/Registrarse';
+import { Evaluacion } from "./Evaluacion";
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/registrarse" component={Registrarse} />
+            <Route exact path="/evaluacion" component = {Evaluacion} />
             <Route component={NotFound} />
           </Switch>
         </div>
