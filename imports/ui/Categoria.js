@@ -23,7 +23,7 @@ class Categoria extends Component {
               <div key={i} className="card">
                 <h5 className="card-header">{cat.nombre}</h5>
                 <div className="card-body">
-                  <Objeto idCategoria={cat._id}/>
+                  <Objeto idCategoria={cat._id} idReporte = {this.props._idReporte}/>
                 </div>
               </div>
             );

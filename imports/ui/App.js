@@ -49,7 +49,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" render={(props) => <Login {...props} setUsuario={this.setUsuario} getUsuario={this.getUsuario} /> } />
             <Route exact path="/registrarse" render={(props) => <Registrarse {...props} setUsuario={this.setUsuario} getUsuario={this.getUsuario} /> } />
-            <Route exact path="/evaluacion" render={(props) => <Evaluacion {...props}/>} />
+            <Route exact path="/evaluacion" render={(props) => <Evaluacion {...props}/>} id_Usuario = {2} />
             <Route component={NotFound} />
           </Switch>
         </div>
