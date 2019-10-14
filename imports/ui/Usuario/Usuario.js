@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Usuarios from '/imports/api/usuarios';
 
 class Usuario extends Component {
     state = {  }
