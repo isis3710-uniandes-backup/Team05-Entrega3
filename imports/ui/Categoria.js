@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import Categorias from "../api/categorias";
+import Objeto from "./Objeto.js";
 
 class Categoria extends Component {
   constructor(props) {
@@ -19,23 +20,10 @@ class Categoria extends Component {
         <div>
           {this.props.categorias.map((cat, i) => {
             return (
-              <div key={i} className="card" style={{ width: "18rem" }}>
+              <div key={i} className="card">
+                <h5 className="card-header">{cat.nombre}</h5>
                 <div className="card-body">
-                  <h5 className="card-title">{cat.nombre}</h5>
-                  <p className="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content. {cat._id}
-                  </p>
-                  <a href="#" className="card-link">
-                    Card link
-                  </a>
-                  <a
-                    href="#"
-                    className="card-link"
-                    onClick={_ => this.handleDelete(cat._id)}
-                  >
-                    Eliminar
-                  </a>
+                  <Objeto idCategoria={cat._id}/>
                 </div>
               </div>
             );
