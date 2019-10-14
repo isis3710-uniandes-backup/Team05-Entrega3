@@ -1,0 +1,16 @@
+/* ESTILOS Registrarse.js y Login.js */
+form.reg {
+    width: 90vw;
+}
+form.log {
+    width: 90vw;
+}
+
+@media(min-width: 980px) {
+    form.reg {
+        max-width: 380px;
+    }
+    form.log {
+        max-width: 500px;
+    }
+}

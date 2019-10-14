@@ -6,6 +6,10 @@ function insertUsuario(nombre, nombreUsuario, imagen, contrasenia, correo, ahorr
   Usuarios.insert({ nombre, nombreUsuario, imagen, contrasenia, correo, ahorroActual, amigos, _id: nombreUsuario});
 }
 
+function getUsuario(usr) {
+  return Usuarios.findOne(usr);
+}
+
 function insertAll() {
   
   if (Usuarios.find().count() === 0) {
@@ -18,4 +22,4 @@ function insertAll() {
 
 }
 
-export { insertAll };
+export { insertAll, getUsuario, insertUsuario };

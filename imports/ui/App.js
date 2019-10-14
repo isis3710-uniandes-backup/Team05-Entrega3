@@ -21,15 +21,22 @@ class App extends Component {
 
     this.setUsuario = this.setUsuario.bind(this);
     this.getUsuario = this.getUsuario.bind(this);
+    this.removeUsuario = this.removeUsuario.bind(this);
   }
 
   setUsuario(usr) {
     this.setState({ actual: usr });
+    // localStorage.setItem('actual', this.state.actual);
     console.log("Actualizado el usuario !");
   }
 
   getUsuario() {
     return this.state.actual;
+  }
+
+  removeUsuario() {
+    this.setState({ actual: undefined });
+    // localStorage.clear();
   }
 
   requireAuth(nextState, replace) {

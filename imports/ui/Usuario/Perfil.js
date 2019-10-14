@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Usuarios from '/imports/api/usuarios';
 
-class Usuario extends Component {
+class Perfil extends Component {
     state = {  }
     render() { 
         return ( 
@@ -19,4 +19,4 @@ class Usuario extends Component {
     }
 }
  
-export default Usuario;
+export default Perfil;
