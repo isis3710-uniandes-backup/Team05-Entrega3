@@ -9,16 +9,23 @@ class Evaluacion extends Component {
     super(props);
   }
 
+  state = {
+    objetos : this.props.objetos
+  }
+
   render() {
+    let id = Evaluaciones.insert({fecha: new Date(), planetas: -1, _idUsuario: null, _idEvaluacionAnterior: null })
     return (
       <div className="host">
         <div className="container">
           <div className="row">
             <div className="col-6">
-              <Categoria />
+              <Categoria id_Reporte= {id} />
             </div>
             <div className="col-6">
-              <button type="button" onClick={calcPuntos(Objeto.state.objetos)}>Calcular</button>
+              <button type="button" onClick={() => {
+                this.calcPuntos(id)
+              }}>Calcular</button>
             </div>
           </div>
         </div>
@@ -26,8 +33,13 @@ class Evaluacion extends Component {
     );
   }
 
-  calcPuntos(objetos){
-    
+  calcPuntos() {
+    let sum = 0;
+    Evaluaciones.findOne(id);
+    objetos.map((obj, i) => {
+      sum += obj.peso;
+      console.log(sum);
+    })
   }
 
 }
@@ -37,6 +49,6 @@ class Evaluacion extends Component {
 
 export default withTracker(() => {
   return {
-    categorias: Evaluaciones.find().fetch()
+    evaluaciones: Evaluaciones.find().fetch()
   };
 })(Evaluacion);

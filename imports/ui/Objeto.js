@@ -19,6 +19,7 @@ class Objeto extends Component{
         var obj = objetoNuevo;
         delete obj["_id"];
         objetos.insert(obj)
+        console.log(objetos);
         toast.success('Agregaste un uso de '+ objetoNuevo.cantidad + " " + objetoNuevo.unidad + " de " + objetoNuevo.nombre);
     }
     render(){
