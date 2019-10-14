@@ -49,4 +49,5 @@ export default withTracker(() => {
     return {
       objetos: objetos.find().fetch()
     };
-  })(Objeto);
+})(Objeto);
+
