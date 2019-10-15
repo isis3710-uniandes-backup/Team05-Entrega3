@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { withTracker } from "meteor/react-meteor-data";
 
 import './Usuario.css';
 
@@ -8,24 +10,21 @@ class ListarAmigos extends Component {
         super(props);
 
         this.state = {
-            busqueda: "",
-            lista: this.props.amigos
+            busqueda: ""
         }
 
         this.filtrar = this.filtrar.bind(this);
     }
-    
+
     filtrar(event) {
         const b = event.target.value;
-        let filtrado = this.props.amigos.filter(x => x._id.includes(b));
         this.setState({ 
-            busqueda: b,
-            lista: filtrado
-         });
+            busqueda: b
+        });
     }
 
     listarAmigos() {
-        return this.state.lista.map( (e,i) => {
+        return this.props.filtrar(this.state.busqueda).map( (e,i) => {
             return (
                 <li key={i} className="list-group-item d-flex d-flex flex-md-row flex-column justify-content-between align-items-center">
                     <img src={e.imagen} alt="Imagen de Perfil" className="rounded-circle" height="55" width="55" />
@@ -38,6 +37,17 @@ class ListarAmigos extends Component {
         });
     }
 
+    noTieneAmigos() {
+        let res = this.props.filtrar(this.state.busqueda);
+        if(res.length === 1 && res[0]._id === this.props.getUsuario()._id) {
+            return (
+                <li className="list-group-item d-flex d-flex flex-md-row flex-column justify-content-between align-items-center">
+                    <p className="">Parece que aún no tienes rivales. <Link to='/personas'>¡Añade Unos cuantos!</Link></p>
+                </li>
+            );
+        }
+    }
+
     render() { 
         return ( 
             <div className="p-md-3">
@@ -47,10 +57,18 @@ class ListarAmigos extends Component {
                 </div>
                 <ul className="list-group list-group-flush">
                     {this.listarAmigos()}
+                    {this.noTieneAmigos()}
                 </ul>
             </div>
         );
     }
 }
  
-export default ListarAmigos;
+export default withTracker(({ amigos }) => {
+  
+    return {
+      filtrar: (busqueda) => {
+        return amigos.filter(x => x._id.includes(busqueda));
+      }
+    };
+  })(ListarAmigos);

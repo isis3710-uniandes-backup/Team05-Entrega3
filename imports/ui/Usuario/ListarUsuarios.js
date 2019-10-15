@@ -8,11 +8,20 @@ class ListarUsuarios extends Component {
     super(props);
 
     this.state = {
+      busqueda: "",
       amigos: this.props.getUsuario().amigos
     };
 
     this.handleFriend = this.handleFriend.bind(this);
+    this.filtrar = this.filtrar.bind(this);
   }
+
+  filtrar(event) {
+    const b = event.target.value;
+    this.setState({ 
+        busqueda: b
+    });
+}
 
   handleFriend(username) {
     this.setState(prev => {
@@ -30,8 +39,11 @@ class ListarUsuarios extends Component {
       <div>
         <div className="container host">
           <h3 className="font-weight-bold my-5 pt-4">Con quién competir</h3>
+          <div className="my-4 buscador">
+            <input className="form-control" id="buscarAmigos" autoFocus type="text" value={this.state.busqueda} onChange={this.filtrar} placeholder="Busca por nombre de usuario" />
+          </div>
           <ul className="list-group list-group-flush mb-5">
-            {this.props.personas.filter(x => x._id !== this.props.getUsuario()._id).map((p, i) => {
+            {this.props.filtrar(this.state.busqueda).filter(x => x._id !== this.props.getUsuario()._id).map((p, i) => {
               return (
                 <li
                   key={i}
@@ -70,7 +82,13 @@ class ListarUsuarios extends Component {
 }
 
 export default withTracker(() => {
+  let p = Usuarios.find().fetch();
+
   return {
-    personas: Usuarios.find().fetch()
+    personas: p,
+    filtrar: (busqueda) => {
+      let todos = Usuarios.find().fetch();
+      return todos.filter(x => x._id.includes(busqueda));
+    }
   };
 })(ListarUsuarios);
