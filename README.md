@@ -10,7 +10,7 @@ Una vez desplegada la aplicación, se puede registrar o iniciar sesión para lue
 > [Video](https://www.youtube.com/watch?v=G-fUeK2h1WA&feature=youtu.be)
 
 
-> [Sitio Web](3.86.254.208:3000)
+> [Sitio Web](http://3.86.254.208:3000)
 
 > [Presentación](https://docs.google.com/presentation/d/1JXTZde0KdELhc1oxuWOIfcW0IkncmlLJcYF1I9s5Xoc/edit?usp=sharing)
 
