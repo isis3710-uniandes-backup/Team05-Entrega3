@@ -16,23 +16,23 @@ class ListarEvaluaciones extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.evaluaciones.map((e, i) => {
-                    console.log(this.props);
-                    console.log(Date(e.fecha));
-                    if(this.props.idUsuario === e._idUsuario){
-                    return (
-                        <div key={i} className="card">
-                            <h5 className="card-header">Planetas Consumidos: {e.planetas}</h5>
-                            <div className="card-body">
-                                <p className="card-title">Fecha: {Date(e.fecha)} </p>
-                            </div>
-                        </div>
-                    );
+            <div className="container host">
+                <ul className="list-group">
+                    {this.state.evaluaciones.map((e, i) => {
+                        if (this.props.idUsuario === e._idUsuario) {
+                            return (
+                                <li key={i}
+                                    className="list-group-item d-flex justify-content-between align-items-center">
+                                    <h6>Planetas Consumidos</h6>
+                                    <p max-width="150px">{e.planetas}</p>
+                                    <h6>Fecha</h6>
+                                    <p max-width="150px">{Date(e.fecha)} </p>
+                                </li>
+                            );
+                        }
+                    })
                     }
-                })
-                }
-
+                </ul>
             </div>
         );
     }

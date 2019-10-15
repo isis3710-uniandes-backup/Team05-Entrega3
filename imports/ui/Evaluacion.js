@@ -67,9 +67,7 @@ class Evaluacion extends Component {
       }
     }
 
-    let planetas = sum / (objetos.length * 8);
-    console.log(planetas);
-    console.log(this.props);
+    let planetas = (sum / (objetos.length * 8))%4 + Math.random();
     Evaluaciones.update(id, { $set: { planetas: planetas, _idUsuario: this.props.id_Usuario._id}, $push: {idCategoria: id_Categoria,} });
     Usuarios.update(this.props.id_Usuario._id, {$set: {ahorroActual: planetas}});
 
