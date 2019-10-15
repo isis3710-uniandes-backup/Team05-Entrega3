@@ -70,7 +70,8 @@ class Perfil extends Component {
                             </div>
                         </div>
                         {/* <div className="col-8 col-md-7 ml-0 ml-md-3"> */}
-                        <div className="col-7">
+                        <div className="col"></div>
+                        <div className="col">
                             {/* Aquí van sus amigos listados */}
                             <ListarEvaluaciones idUsuario={this.props.getUsuario()._id} />
                         </div>
