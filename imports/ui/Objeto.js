@@ -30,7 +30,7 @@ class Objeto extends Component{
         var obj = objetoNuevo;
         var x = this.props._idReporte;
         obj._idReporte = x;
-        obj._idCategoria = this.props.idCategoria;
+        obj._idCategoria = 0;
         delete obj["_id"];
         objetos.insert(obj);
         console.log(objetos.find().fetch());
