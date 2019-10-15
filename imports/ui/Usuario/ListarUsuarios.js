@@ -8,7 +8,7 @@ class ListarUsuarios extends Component {
     super(props);
 
     this.state = {
-      amigos: this.props.getUsuario() ? this.props.getUsuario().amigos : []
+      amigos: this.props.getUsuario().amigos
     };
 
     this.handleFriend = this.handleFriend.bind(this);
@@ -19,7 +19,7 @@ class ListarUsuarios extends Component {
       return { amigos: [...prev.amigos, username] };
     });
     Usuarios.update(
-      { _id: this.props.getUsuario().nombreUsuario },
+      { _id: this.props.getUsuario()._id },
       { $push: { amigos: username } }
     );
     this.forceUpdate();
@@ -29,9 +29,7 @@ class ListarUsuarios extends Component {
     return (
       <div>
         <div className="container host">
-          <h3 className="font-weight-bold">A quién seguir</h3>
-          <br />
-          <br />
+          <h3 className="font-weight-bold my-5 pt-4">A quién seguir</h3>
           <ul className="list-group list-group-flush mb-5">
             {this.props.personas.filter(x => x._id !== this.props.getUsuario()._id).map((p, i) => {
               return (

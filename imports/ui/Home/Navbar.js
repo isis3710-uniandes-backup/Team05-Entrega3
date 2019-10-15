@@ -10,10 +10,14 @@ class Navbar extends Component {
         this.salir = this.salir.bind(this);
     }
 
-    verUsuarios() {
+    listarEnlaces() {
         if(this.props.getUsuario()) {
             return (
-                <li className="nav-item mx-md-2"><Link to="/personas" className="nav-link">Personas</Link></li>
+                <ul className="navbar-nav ml-0 align-items-end">
+                    <li className="nav-item mx-md-2"><Link to="/personas" className="nav-link">Personas</Link></li>
+                    <li className="nav-item mx-md-2"><Link to="/evaluacion" className="nav-link">Calcular Huella</Link></li>
+                    {this.revisarLogin()}
+                </ul>
             );
         }
     }
@@ -32,7 +36,7 @@ class Navbar extends Component {
                     </div>
                     <div className="dropdown-menu dropdown-menu-sm-right" aria-labelledby="drop">
                         <Link className="dropdown-item" to="/perfil">Mi Perfil</Link>
-                        <Link className="dropdown-item" to="/" onClick={this.salir}>Salir</Link>
+                        <Link className="dropdown-item" to="/" onClick={this.salir}>Cerrar Sesión</Link>
                     </div>
                 </li>
             );
@@ -63,11 +67,7 @@ class Navbar extends Component {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div id="thebar" className="collapse navbar-collapse justify-content-end mr-md-4">
-                    <ul className="navbar-nav ml-0 align-items-end">
-                        <li className="nav-item mx-md-2"><Link to="/" className="nav-link">Inicio</Link></li>
-                        {this.verUsuarios()}
-                        {this.revisarLogin()}
-                    </ul>
+                    {this.listarEnlaces()}
                 </div>
             </nav>
         );

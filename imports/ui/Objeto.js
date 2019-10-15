@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withTracker } from "meteor/react-meteor-data";
 import { toast } from "react-toastify";
 import objetos from "../api/objetos";
 
@@ -51,7 +50,7 @@ class Objeto extends Component{
                                 <h5 className="card-title">{obj.nombre}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Peso: {obj.peso}</h6>
                                 <p className="card-text">{obj.descripcion}</p>
-                                <input id="quantity" type="number" name="quantity" min="1" value={this.state.objetos[i].cantidad} onChange={(e) => {this.handleNumber(e,i)}}/>
+                                <input id="quantity" type="number" name="quantity" className="form-controñ" min="1" value={this.state.objetos[i].cantidad} onChange={(e) => {this.handleNumber(e,i)}}/>
                                 <label htmlFor="quantity">{obj.unidad}</label>
                                 <button className="but-solid" onClick={()=> {this.handleSubmit(this.state.objetos[i])}} style={{ marginTop: "3%"}}>Agregar</button>
                             </div>
@@ -65,8 +64,5 @@ class Objeto extends Component{
 
 
 
-export default withTracker(() => {
-    return {
-    };
-})(Objeto);
+export default Objeto;
 

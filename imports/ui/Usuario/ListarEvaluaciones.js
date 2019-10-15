@@ -8,15 +8,14 @@ class ListarEvaluaciones extends Component {
     constructor(props) {
         super(props);
 
-    }
-
-    state = {
-        evaluaciones: this.props.evaluaciones
+        this.state = {
+            evaluaciones: this.props.evaluaciones
+        }
     }
 
     render() {
         return (
-            <div className="container host">
+            <div className="container">
                 <ul className="list-group">
                     {this.state.evaluaciones.map((e, i) => {
                         if (this.props.idUsuario === e._idUsuario) {

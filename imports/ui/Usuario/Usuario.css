@@ -2,13 +2,14 @@
 div.buscador {
     width: 90vw;
 }
-@media(min-width: 980px) {
+@media(min-width: 576px) {
     div.buscador {
-        max-width: 100%;
+        max-width: 50%;
     }
     span {
         max-width: 150px;
         word-wrap: break-word;
+        padding: 0;
     }
 }
 .place {
@@ -20,4 +21,24 @@ div.buscador {
 /* ESTILOS ListarUsuarios.js */
 span {
     padding: 2% 0;
+}
+
+/* ESTILOS Perfil.js */
+.place {
+    color: #2B6D29;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.perf {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+.img-perfil {
+    max-width: 60vw;
+}
+@media(min-width:576px) {
+    .img-perfil {
+        max-width: 15vw;
+    }
 }

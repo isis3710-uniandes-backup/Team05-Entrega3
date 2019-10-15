@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import Usuarios from '/imports/api/usuarios';
+import { withTracker } from "meteor/react-meteor-data";
 import { toast } from 'react-toastify';
+import Usuarios from '/imports/api/usuarios';
 
-
-import './Perfil.css';
+import './Usuario.css';
 import ListarEvaluaciones from './ListarEvaluaciones';
+import ListarAmigos  from "./ListarAmigos";
 
 class Perfil extends Component {
 
@@ -13,70 +13,61 @@ class Perfil extends Component {
         super(props);
 
         this.state = {
-            redirect: false
+            usuario: this.props.getUsuario(),
+            puesto: 1,
+            filtrada: []
         }
         
-        this.handleCerrarSesion = this.handleCerrarSesion.bind(this)
+        this.handleCerrarSesion = this.handleCerrarSesion.bind(this);
     }
 
-    // renderRedirect() {
-    //     if (this.state.redirect) {
-    //         this.props.removeUsuario()
-    //         toast.success('¡Vuelve pronto 😊!');
-    //         return <Redirect to="/" />
-    //     }
-    // }
-
-    // setRedirect() {
-    //     this.setState({
-    //         redirect: true
-    //     })
-    // }
+    componentWillMount() {
+        console.log(this.props.todos);
+        let usr = this.props.getUsuario();
+        let f = this.props.todos.filter(x => usr.amigos.includes(x.nombreUsuario) || usr._id === x._id);
+        f.sort( (a1, a2) => a1.ahorroActual - a2.ahorroActual);
+        console.log(f);
+        this.setState({ 
+            puesto: f.findIndex((e) => e._id === usr._id) + 1,
+            filtrada: f
+        });
+    }
 
     handleCerrarSesion(event) {
         event.preventDefault();
         this.props.removeUsuario();
         toast.success('¡Vuelve pronto 😊!');
-        // this.setRedirect()
     }
 
     render() {
         return (
-            <div>
-                {/* {this.renderRedirect()} */}
-                <div className="container host">
-                    <div className="row justify-content-center align-items-center">
-                        {/* <div className="col-4 col-md-5 mr-0 mr-md-3"> */}
-                        <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                            <div className="container host">
-                                <div className="row justify-content-center">
-                                    <div className="col text-center">
-                                        <img className="rounded-circle" alt="Imagen del usuario" src={this.props.getUsuario().imagen}
-                                            data-holder-rendered="true"></img>
-                                        <div className="puesto">
-                                            Puesto #1
-                                        </div>
-                                        <div className="nombre">
-                                            {this.props.getUsuario().nombre}
-                                        </div>
-                                        <div className="nombre-usuario">
-                                            @{this.props.getUsuario().nombreUsuario}
-                                        </div>
-                                        <div className="correo">
-                                            {this.props.getUsuario().correo}
-                                        </div>
-                                        <div className="pt-2">
-                                            <button onClick={this.handleCerrarSesion} type="button" className="btn btn-danger"><link to="/"></link>Cerrar sesión</button>
-                                        </div>
-                                    </div>
-                                </div>
+            <div className="container host">
+                <div className="row">
+                    <div className="col-12 col-md-4 text-center d-flex flex-column justify-content-center align-items-center">
+                        <img className="rounded-circle img-perfil" alt="Imagen del usuario" src={this.state.usuario.imagen} />
+                        <hr />
+                        <h2 className="place mt-3">
+                            Puesto {this.state.puesto}
+                        </h2>
+                        <p className="perf">
+                            {this.state.usuario.nombre}
+                        </p>
+                        <p className="perf text-muted">
+                            @{this.state.usuario.nombreUsuario}
+                        </p>
+                        <p className="perf">
+                            {this.state.usuario.correo}
+                        </p>
+                        <button onClick={this.handleCerrarSesion} type="button" className="btn btn-danger btn-block my-3">Cerrar sesión</button>
+                    </div>
+                    <div className="col-12 col-md-8">
+                        <div className="row flex-column justify-content-between align-items-center">
+                            <div className="col-12">
+                                <ListarAmigos getUsuario={this.props.getUsuario} amigos={this.state.filtrada} />
                             </div>
-                        </div>
-                        {/* <div className="col-8 col-md-7 ml-0 ml-md-3"> */}
-                        <div className="col"></div>
-                        <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                            {/* Aquí van sus amigos listados */}
-                            <ListarEvaluaciones idUsuario={this.props.getUsuario()._id} />
+                            <div className="col-12">
+                                <ListarEvaluaciones idUsuario={this.state.usuario._id} />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,4 +76,8 @@ class Perfil extends Component {
     }
 }
 
-export default Perfil;
+export default withTracker(() => {
+    return {
+      todos: Usuarios.find().fetch(),
+    };
+  })(Perfil);
