@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import Usuarios from '/imports/api/usuarios';
+import './Auth.css';
+import { getUsuario } from '/imports/api/usuarios';
 
 class Login extends Component {
 
@@ -52,10 +53,10 @@ class Login extends Component {
         const usr = this.state.nombreUsuario;
         const pass = this.state.contrasenia;
 
-        let buscado = Usuarios.findOne({ _id: usr, nombreUsuario: usr, contrasenia: pass });
+        let buscado = getUsuario({ _id: usr, nombreUsuario: usr, contrasenia: pass });
         if (buscado) {
             this.props.setUsuario(buscado);
-            toast.success(`¡Bienveni@ ${buscado.nombre} 😁!`);
+            toast.success(`¡Hola de nuevo ${buscado.nombre} 😁!`);
             this.setRedirect();
         }
         else {
@@ -71,7 +72,7 @@ class Login extends Component {
                     <div className="text-center my-3">
                         <h2 className="font-weight-bold">Ingreso</h2>
                     </div>
-                    <form onSubmit={this.handleSubmit} style={{ width: "300px" }}>
+                    <form onSubmit={this.handleSubmit} className="log">
                         <div className="form-group">
                             <label>Nombre de Usuario</label>
                             <input id="nombreUsuario" className="form-control" autoFocus type="text" value={this.state.nombreUsuario} onChange={this.setUsername} placeholder="Ingrese su nombre de usuario" />
