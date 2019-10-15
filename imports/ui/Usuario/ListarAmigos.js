@@ -53,7 +53,7 @@ class ListarAmigos extends Component {
             <div className="p-md-3">
                 <h3 className="font-weight-bold">Tus Rivales</h3>
                 <div className="my-4 buscador">
-                    <input className="form-control" id="buscarAmigos" autoFocus type="text" value={this.state.busqueda} onChange={this.filtrar} placeholder="Busca por nombre de usuario" />
+                    <input className="form-control" id="buscarAmigos2" autoFocus type="text" value={this.state.busqueda} onChange={this.filtrar} placeholder="Busca por nombre de usuario" />
                 </div>
                 <ul className="list-group list-group-flush">
                     {this.listarAmigos()}

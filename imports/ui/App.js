@@ -13,6 +13,7 @@ import Registrarse from './Common/Registrarse';
 import Evaluacion from "./Evaluacion";
 import Perfil from './Usuario/Perfil';
 import ListarUsuarios from './Usuario/ListarUsuarios';
+import ListarTips from './ListarTips';
 
 class App extends Component {
 
@@ -52,6 +53,7 @@ class App extends Component {
             <Route exact path="/" render={(props) => <Home {...props} getUsuario={this.getUsuario} />} />
             <Route exact path="/login" render={(props) => <Login {...props} setUsuario={this.setUsuario} getUsuario={this.getUsuario} />} />
             <Route exact path="/registrarse" render={(props) => <Registrarse {...props} setUsuario={this.setUsuario} getUsuario={this.getUsuario} />} />
+            <Route exact path="/tips" render={(props) => <ListarTips {...props} getUsuario={this.getUsuario} />} />
             <PrivateRoute exact path="/perfil" render={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} getUsuario={this.getUsuario} />
             <PrivateRoute exact path="/evaluacion" render={(props) => <Evaluacion {...props} id_Usuario = {this.getUsuario()} />} getUsuario={this.getUsuario} />
             <PrivateRoute exact path="/personas" render={(props) => <ListarUsuarios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />

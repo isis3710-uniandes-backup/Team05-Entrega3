@@ -16,6 +16,7 @@ class Navbar extends Component {
                 <ul className="navbar-nav ml-0 align-items-end">
                     <li className="nav-item mx-md-2"><Link to="/personas" className="nav-link">Personas</Link></li>
                     <li className="nav-item mx-md-2"><Link to="/evaluacion" className="nav-link">Calcular Huella</Link></li>
+                    <li className="nav-item mx-md-2"><Link to="/tips" className="nav-link">Tips Ambientales</Link></li>
                     {this.revisarLogin()}
                 </ul>
             );
@@ -23,6 +24,7 @@ class Navbar extends Component {
         else {
             return (
                 <ul className="navbar-nav ml-0 align-items-end">
+                    <li className="nav-item mx-md-2"><Link to="/tips" className="nav-link">Tips Ambientales</Link></li>
                     {this.revisarLogin()}
                 </ul>
             );
