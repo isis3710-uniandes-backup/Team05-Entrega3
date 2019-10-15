@@ -30,9 +30,13 @@ class App extends Component {
     this.isAuth = this.isAuth.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({ actual: localStorage.getItem('actual') });
+  }
+
   setUsuario(usr) {
     this.setState({ actual: usr });
-    // localStorage.setItem('actual', this.state.actual);
+    localStorage.setItem('actual', this.state.actual);
     console.log("Actualizado el usuario !");
   }
 
