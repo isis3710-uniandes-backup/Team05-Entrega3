@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { toast } from 'react-toastify';
 
 import './Auth.css';
@@ -9,7 +9,6 @@ class Registrarse extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            redirect: false,
             nombre: "",
             nombreUsuario: "",
             contrasenia: "",
@@ -24,15 +23,9 @@ class Registrarse extends Component {
     }
 
     renderRedirect() {
-        if (this.state.redirect) {
-            return <Redirect to='/' />
+        if (this.props.getUsuario()) {
+            return <Redirect to='/perfil' />
         }
-    }
-
-    setRedirect() {
-        this.setState({
-          redirect: true
-        })
     }
 
     validate() {
@@ -81,7 +74,6 @@ class Registrarse extends Component {
             insertUsuario(nuevo.nombre, nuevo.nombreUsuario, nuevo.imagen, nuevo.contrasenia, nuevo.correo, nuevo.ahorroActual, nuevo.amigos);
             this.props.setUsuario(nuevo);
             toast.success(`¡Bienvenido ${nuevo.nombre} 😁!`);
-            this.setRedirect();
          }
     }
 
@@ -117,7 +109,7 @@ class Registrarse extends Component {
                         </div>
                         <button className="but-solid d-block mx-auto mt-2" type="submit" disabled={!this.validate()}>Registrarse</button>
                     </form>
-                    <div className="text-center mt-4">
+                    <div className="text-center my-4">
                         <Link to="/login" className="text-muted"><small>¿Estás registrado? ¡Ingresa ahora!</small></Link>
                     </div>
                 </div>

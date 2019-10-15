@@ -4,7 +4,7 @@ body {
   color: #1E1E24;
   
 }
-.title, h1, h2, h3, h4, h5, h6 {
+.title, .place, h1, h2, h3, h4, h5, h6 {
   font-family: 'Exo 2', Roboto, sans-serif;
 }
 .host {
@@ -63,6 +63,7 @@ body {
 }
 .but-solid:disabled {
   color: white !important;
+  cursor: default;
   background-color: #6E7271 !important;
   border-color: #6E7271 !important;
   opacity: 0.5;

@@ -4,7 +4,9 @@ import Evaluaciones from "../api/evaluaciones";
 import Categoria from "../ui/Categoria";
 import Objetos from "../api/objetos";
 import { Link } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
+import Usuarios from "../api/usuarios";
+
+import './Objeto.css';
 
 class Evaluacion extends Component {
   constructor(props) {
@@ -12,15 +14,19 @@ class Evaluacion extends Component {
   }
 
   render() {
-    return (<div className="host">
-      <div className="container">
+    return (
+    <div className="host">
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-6">
+          <div className="col-12 col-md-10">
             <Categoria _idReporte={this.props.id} />
           </div>
-          <div className="col-6">
+          <div className="col-12 col-md-2 fijada mt-3 shadow p-3">  
+            <p>
+              Ingresa cada una de las cantidades de los objetos que consumes a diario. No necesitas ingresarlas todas, solo las que desees.
+            </p>
             <Link to = "/perfil">
-              <button type="button" onClick={() => {
+              <button className="but-solid" type="button" onClick={() => {
                 this.calcPuntos(this.props.id)
               }}>Calcular</button>
             </Link>
@@ -67,9 +73,9 @@ class Evaluacion extends Component {
       }
     }
 
-    let planetas = sum / (objetos.length * 8);
-    console.log(planetas);
-    Evaluaciones.update(id, { planetas: planetas, idCategoria: id_Categoria, idUsuario: this.props.getUsuario });
+    let planetas = (sum / (objetos.length * 8))%4 + Math.random();
+    Evaluaciones.update(id, { $set: { planetas: planetas, _idUsuario: this.props.id_Usuario._id}, $push: {idCategoria: id_Categoria,} });
+    Usuarios.update(this.props.id_Usuario._id, {$set: {ahorroActual: planetas}});
 
   }
 

@@ -1,0 +1,26 @@
+.esconder { 
+    display:none; 
+}
+.resize {
+    max-width: 100px !important;
+}
+div.ob.card {
+    width: 280px;
+    min-width: 200px;
+}
+
+/* ESTILOS Evaluacion.js */
+@media(min-width: 576px) {
+    .fijada {
+        position: fixed;
+        top: 15vh;
+        right: 0;
+    }
+}
+.fijada {
+    position: fixed;
+    background-color: white;
+    top: 8vh;
+    right: 0;
+    width: 100vw
+}

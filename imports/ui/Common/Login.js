@@ -11,8 +11,7 @@ class Login extends Component {
         super(props);
         this.state = {
             nombreUsuario: "",
-            contrasenia: "",
-            redirect: false
+            contrasenia: ""
         }
 
         this.setUsername = this.setUsername.bind(this);
@@ -21,15 +20,9 @@ class Login extends Component {
     }
 
     renderRedirect() {
-        if (this.state.redirect) {
-            return <Redirect to='/' />
+        if (this.props.getUsuario()) {
+            return <Redirect to='/perfil' />
         }
-    }
-
-    setRedirect() {
-        this.setState({
-          redirect: true
-        })
     }
 
     validate() {
@@ -57,7 +50,6 @@ class Login extends Component {
         if (buscado) {
             this.props.setUsuario(buscado);
             toast.success(`¡Hola de nuevo ${buscado.nombre} 😁!`);
-            this.setRedirect();
         }
         else {
             toast.error('Nombre de usuario o clave incorrectos 😓, ¿Los escribiste bien?');
