@@ -17,7 +17,7 @@ class ListarEvaluaciones extends Component {
     render() {
         return (
             <div className="container host">
-                <ul className="list-group">
+                <ul className="list-group list-group-flush mb-5">
                     {this.state.evaluaciones.map((e, i) => {
                         if (this.props.idUsuario === e._idUsuario) {
                             return (
@@ -25,7 +25,9 @@ class ListarEvaluaciones extends Component {
                                     className="list-group-item d-flex flex-md-row flex-column justify-content-between align-items-center">
                                     <strong>Planetas: {e.planetas.toFixed(2)}</strong>
                                     <strong>Fecha</strong>
-                                    <p max-width="150px">{Date(e.fecha)} </p>
+                                    <strong max-width="150px">{e.fecha.getFullYear()}/{e.fecha.getMonth()}/{e.fecha.getDate()}</strong>
+                                    <strong>Hora:</strong>
+                                    <strong max-width="150px">{e.fecha.getHours()}:{e.fecha.getMinutes()}</strong>
                                 </li>
                             );
                         }
