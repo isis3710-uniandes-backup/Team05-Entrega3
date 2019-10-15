@@ -40,8 +40,8 @@ class ListarAmigos extends Component {
 
     render() { 
         return ( 
-            <div className="p-md-5">
-                <span className="font-weight-bold title">Tus Rivales</span>
+            <div className="p-md-3">
+                <h3 className="font-weight-bold">Tus Rivales</h3>
                 <div className="my-4 buscador">
                     <input className="form-control" id="buscarAmigos" autoFocus type="text" value={this.state.busqueda} onChange={this.filtrar} placeholder="Busca por nombre de usuario" />
                 </div>
