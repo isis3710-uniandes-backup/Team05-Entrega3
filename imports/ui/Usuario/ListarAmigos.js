@@ -28,11 +28,15 @@ class ListarAmigos extends Component {
     }
 
     listarAmigos() {
-        let ordenada = this.state.lista.sort( (a1, a2) => a2.ahorroActual - a1.ahorroActual);
+        let ordenada = this.state.lista.sort( (a1, a2) => a1.ahorroActual - a2.ahorroActual);
         return ordenada.map( (e,i) => {
             return (
-                <li key={i}>
-                    Content!
+                <li key={i} className="list-group-item d-flex justify-content-between align-items-center">
+                    <img src={e.imagen} alt="Imagen de Perfil" className="rounded-circle" height="55" width="55" />
+                    <span className="place">{ i+1 }</span>
+                    <span>{e.nombre}</span>
+                    <span>{e.nombreUsuario}</span>
+                    <span>{e.ahorroActual}</span>
                 </li>
             );
         });

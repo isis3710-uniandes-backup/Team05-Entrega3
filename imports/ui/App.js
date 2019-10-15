@@ -26,8 +26,8 @@ class App extends Component {
     this.getUsuario = this.getUsuario.bind(this);
     this.removeUsuario = this.removeUsuario.bind(this);
 
-    this.requireAuth = this.requireAuth.bind(this);
-    this.isAuth = this.isAuth.bind(this);
+    // this.requireAuth = this.requireAuth.bind(this);
+    // this.isAuth = this.isAuth.bind(this);
   }
 
   componentWillMount() {
@@ -50,20 +50,20 @@ class App extends Component {
     // localStorage.clear();
   }
 
-  requireAuth(nextState, replace) {
-    if (!this.getUsuario()) {
-      replace({
-        pathname: '/login'
-      })
-    }
-  }
-  isAuth(nextState, replace) {
-    if (this.getUsuario()) {
-      replace({
-        pathname: '/perfil'
-      })
-    }
-  }
+  // requireAuth = (nextState, replace) => {
+  //   if (!this.getUsuario()) {
+  //     replace({
+  //       pathname: '/login'
+  //     })
+  //   }
+  // }
+  // isAuth = (nextState, replace) => {
+  //   if (this.getUsuario()) {
+  //     replace({
+  //       pathname: '/perfil'
+  //     })
+  //   }
+  // }
 
   render() {
     return (
@@ -72,11 +72,11 @@ class App extends Component {
           <Navbar getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />
           <Switch>
             <Route exact path="/" render={(props) => <Home {...props} getUsuario={this.getUsuario} />} />
-            <Route exact path="/login" render={(props) => <Login {...props} setUsuario={this.setUsuario} /> } onEnter={this.isAuth} />
-            <Route exact path="/registrarse" render={(props) => <Registrarse {...props} setUsuario={this.setUsuario} /> } onEnter={this.isAuth} />
-            <Route exact path="/perfil" render={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} onEnter={this.requireAuth} />
-            <Route exact path="/evaluacion" render={(props) => <Evaluacion {...props} id_Usuario = {this.getUsuario} />}  />
-            <Route exact path="/personas" render={(props) => <ListarUsuarios {...props} getUsuario={this.getUsuario} /> } onEnter={this.requireAuth} />
+            <Route exact path="/login" render={(props) => <Login {...props} setUsuario={this.setUsuario} />}  />
+            <Route exact path="/registrarse" render={(props) => <Registrarse {...props} setUsuario={this.setUsuario} />} />
+            <Route exact path="/perfil" render={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} />
+            <Route exact path="/evaluacion" render={(props) => <Evaluacion {...props} /*id_Usuario = {this.getUsuario}*//>} />
+            <Route exact path="/personas" render={(props) => <ListarUsuarios {...props} getUsuario={this.getUsuario} />} />
             <Route component={NotFound} />
           </Switch>
         </div>

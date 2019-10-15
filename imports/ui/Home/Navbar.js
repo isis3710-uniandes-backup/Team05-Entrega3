@@ -28,7 +28,7 @@ class Navbar extends Component {
             return (
                 <li className="nav-item dropdown ml-5">
                     <div id="drop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img className="rounded-circle profilePic" src={this.props.getUsuario().imagen} width="45" height="45" />
+                        <img className="rounded-circle profilePic" src={this.props.getUsuario().imagen} width="45" height="45" alt="Imagen del perfil" />
                     </div>
                     <div className="dropdown-menu dropdown-menu-sm-right" aria-labelledby="drop">
                         <Link className="dropdown-item" to="/perfil">Mi Perfil</Link>

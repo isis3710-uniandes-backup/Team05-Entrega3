@@ -2,9 +2,13 @@
 div.buscador {
     width: 90vw;
 }
-
 @media(min-width: 980px) {
     div.buscador {
         max-width: 100%;
     }
+}
+.place {
+    font-weight: 700;
+    color: #60463B;
+    font-size: 1.02rem;
 }

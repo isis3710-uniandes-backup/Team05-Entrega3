@@ -41,17 +41,14 @@ class ListarUsuarios extends Component {
                   <img
                     src={p.imagen}
                     alt="Imagen de Perfil"
-                    className="img-thumbnail"
-                    style={{
-                      height: "100px",
-                      borderRadius: "50px",
-                      width: "100px"
-                    }}
+                    className="rounded-circle"
+                    height="100"
+                    width="100"
                   />
-                  <p>{p.nombre}</p>
-                  <p>{p.nombreUsuario}</p>
-                  <p>{p.correo}</p>
-                  <p>{p.amigos.length} amigos</p>
+                  <span>{p.nombre}</span>
+                  <span>{p.nombreUsuario}</span>
+                  <span>{p.correo}</span>
+                  <span>{p.amigos.length} amigos</span>
                   <button
                     className="but-solid"
                     disabled={this.state.amigos.includes(p.nombreUsuario)}
