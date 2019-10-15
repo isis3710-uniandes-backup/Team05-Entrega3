@@ -3,37 +3,51 @@ import { withTracker } from "meteor/react-meteor-data";
 import Usuarios from "../../api/usuarios";
 
 class ListarUsuarios extends Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props) {
-        super(props)
+    this.state = {
+      amigos: this.props.getUsuario() ? this.props.getUsuario().amigos : []
+    };
 
-        this.state = {
-            amigos: this.props.getUsuario() ? this.props.getUsuario().amigos : [],
-        }
+    this.handleFriend = this.handleFriend.bind(this);
+  }
 
-        this.handleFriend = this.handleFriend.bind(this);
-    }
-
-    handleFriend(username) {
-        this.setState(prev => {
-            return {amigos: [...prev.amigos, username]}
-        })
-        Usuarios.update({_id: this.props.getUsuario().nombreUsuario}, { $push :  { amigos: username } });
-        this.forceUpdate()
-    }
+  handleFriend(username) {
+    this.setState(prev => {
+      return { amigos: [...prev.amigos, username] };
+    });
+    Usuarios.update(
+      { _id: this.props.getUsuario().nombreUsuario },
+      { $push: { amigos: username } }
+    );
+    this.forceUpdate();
+  }
 
   render() {
     return (
       <div>
         <div className="container host">
-          <h5 className="card-header">A quién seguir</h5>
+          <h3>A quién seguir</h3>
           <br />
           <br />
           <ul className="list-group">
             {this.props.personas.map((p, i) => {
               return (
-                <li key={i} className="list-group-item d-flex justify-content-between align-items-center">
-                  <img src={p.imagen} alt="Imagen de Perfil" className="img-thumbnail" style={{height: '100px'}} />
+                <li
+                  key={i}
+                  className="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  <img
+                    src={p.imagen}
+                    alt="Imagen de Perfil"
+                    className="img-thumbnail"
+                    style={{
+                      height: "100px",
+                      borderRadius: "50px",
+                      width: "100px"
+                    }}
+                  />
                   <p>{p.nombre}</p>
                   <p>{p.nombreUsuario}</p>
                   <p>{p.correo}</p>
@@ -43,7 +57,11 @@ class ListarUsuarios extends Component {
                     disabled={this.state.amigos.includes(p.nombreUsuario)}
                     onClick={_ => this.handleFriend(p.nombreUsuario)}
                   >
-                    Agregar Amigo
+                    {this.state.amigos.includes(p.nombreUsuario) ? (
+                      <React.Fragment>Agregado </React.Fragment>
+                    ) : (
+                      <React.Fragment>Agregar Amigo</React.Fragment>
+                    )}
                   </button>
                 </li>
               );
