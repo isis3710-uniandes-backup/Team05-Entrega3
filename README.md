@@ -6,10 +6,11 @@
 <br/>
 Una vez desplegada la aplicación, se puede registrar o iniciar sesión para luego calcular la huella ecológica que es generada por uno mismo, y compararlo con sus amigos. De esta forma, se puede comparar con los demás usuarios de la aplicación qué tan conscientes del medio ambiente somos.
 
+
 > [Video](https://youtu.be/wBJjLQFR-g8)
 
 
-> [Sitio Web](https://printear.herokuapp.com)
+> [Sitio Web](https://leafstyle.herokuapp.com)
 
 
 
