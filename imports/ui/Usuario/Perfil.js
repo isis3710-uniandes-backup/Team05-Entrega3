@@ -21,6 +21,7 @@ class Perfil extends Component {
 
     renderRedirect() {
         if (this.state.redirect) {
+            this.props.removeUsuario()
             return <Redirect to="/" />
         }
     }
@@ -29,7 +30,6 @@ class Perfil extends Component {
         this.setState({
             redirect: true
         })
-        this.props.removeUsuario()
     }
 
     handleCerrarSesion(event) {
