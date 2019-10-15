@@ -13,7 +13,7 @@ class Evaluacion extends Component {
 
   render() {
     return (<div className="host">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-11">
             <Categoria _idReporte={this.props.id} />
