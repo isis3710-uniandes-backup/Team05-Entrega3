@@ -2,6 +2,7 @@
   "name": "leafstyle",
   "private": true,
   "scripts": {
+    "prestart": "meteor npm install",
     "start": "meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
