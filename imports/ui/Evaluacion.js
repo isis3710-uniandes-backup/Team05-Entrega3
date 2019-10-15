@@ -6,19 +6,25 @@ import Objetos from "../api/objetos";
 import { Link } from 'react-router-dom';
 import Usuarios from "../api/usuarios";
 
+import './Objeto.css';
+
 class Evaluacion extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return (<div className="host">
+    return (
+    <div className="host">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-10">
+          <div className="col-12 col-md-10">
             <Categoria _idReporte={this.props.id} />
           </div>
-          <div className="col-2 sticky">
+          <div className="col-12 col-md-2 fijada mt-3 shadow p-3">  
+            <p>
+              Ingresa cada una de las cantidades de los objetos que consumes a diario. No necesitas ingresarlas todas, solo las que desees.
+            </p>
             <Link to = "/perfil">
               <button className="but-solid" type="button" onClick={() => {
                 this.calcPuntos(this.props.id)

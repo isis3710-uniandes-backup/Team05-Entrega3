@@ -17,15 +17,7 @@ class ListarEvaluaciones extends Component {
         return (
             <div className="p-md-3">
                 <div className="row my-4">
-                    <img
-                        src="https://www.pinclipart.com/picdir/big/112-1128532_eco-green-tree-png-clipart-transparent-png.png"
-                        alt="Logo para mostrar las evaluaciones realizadas."
-                        className="rounded-circle"
-                        height="40"
-                        width="40"
-                        style={{display:"inline-block", verticalAlign:"middle"}}
-                    />
-                    <h3 class="font-weight-bold ml-3" style={{display:"inline-block", verticalAlign:"middle"}}>Tus Evaluaciones</h3>
+                    <h3 className="font-weight-bold ml-3" style={{display:"inline-block", verticalAlign:"middle"}}>Tus Evaluaciones</h3>
                 </div>
                 <ul className="list-group list-group-flush mb-5">
                     {this.state.evaluaciones.map((e, i) => {

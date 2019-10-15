@@ -42,16 +42,18 @@ class Objeto extends Component{
     render(){
         {this.handleObjetos()}
         return (
-           <div className="row">
+           <div className="card-deck">
                {this.state.objetos.map((obj,i)=>{
                    return(
-                        <div key={i} className={this.state.objetos[i].show ? 'card': 'esconder'} style={{ width: "21rem", marginTop:"1rem", marginLeft:"1rem"}}>
+                        <div key={i} className={this.state.objetos[i].show ? 'ob card mt-2 ml-2': 'esconder'}>
                             <div className="card-body">
                                 <h5 className="card-title">{obj.nombre}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Peso: {obj.peso}</h6>
-                                <p className="card-text">{obj.descripcion}</p>
-                                <input id="quantity" type="number" name="quantity" className="form-controñ" min="1" value={this.state.objetos[i].cantidad} onChange={(e) => {this.handleNumber(e,i)}}/>
-                                <label htmlFor="quantity">{obj.unidad}</label>
+                                <p className="card-text text-wrap">{obj.descripcion}</p>
+                                <div className="form-group">
+                                    <input type="number" name="quantity" className="form-control resize d-inline-block" min="1" value={this.state.objetos[i].cantidad} onChange={(e) => {this.handleNumber(e,i)}}/>
+                                    <label className="d-inline-block">  {obj.unidad}</label>
+                                </div>
                                 <button className="but-solid" onClick={()=> {this.handleSubmit(this.state.objetos[i])}} style={{ marginTop: "3%"}}>Agregar</button>
                             </div>
                         </div>                 

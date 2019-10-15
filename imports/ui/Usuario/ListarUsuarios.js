@@ -29,7 +29,7 @@ class ListarUsuarios extends Component {
     return (
       <div>
         <div className="container host">
-          <h3 className="font-weight-bold my-5 pt-4">A quién seguir</h3>
+          <h3 className="font-weight-bold my-5 pt-4">Con quién competir</h3>
           <ul className="list-group list-group-flush mb-5">
             {this.props.personas.filter(x => x._id !== this.props.getUsuario()._id).map((p, i) => {
               return (
