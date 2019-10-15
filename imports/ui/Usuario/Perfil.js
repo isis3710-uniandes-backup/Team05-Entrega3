@@ -43,7 +43,7 @@ class Perfil extends Component {
         return (
             <div className="container host">
                 <div className="row">
-                    <div className="col-12 col-md-4 text-center d-flex flex-column justify-content-center align-items-center">
+                    <div className="col-12 col-md-4 text-center d-flex flex-column justify-content-center align-items-center fijo">
                         <img className="rounded-circle img-perfil" alt="Imagen del usuario" src={this.state.usuario.imagen} />
                         <hr />
                         <h2 className="place mt-3">
@@ -60,7 +60,7 @@ class Perfil extends Component {
                         </p>
                         <button onClick={this.handleCerrarSesion} type="button" className="btn btn-danger btn-block my-3">Cerrar sesión</button>
                     </div>
-                    <div className="col-12 col-md-8">
+                    <div className="col-12 col-md-8 offset-md-4">
                         <div className="row flex-column justify-content-between align-items-center">
                             <div className="col-12">
                                 <ListarAmigos getUsuario={this.props.getUsuario} amigos={this.state.filtrada} />
