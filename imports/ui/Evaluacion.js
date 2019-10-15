@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Usuarios from "../api/usuarios";
 
 import './Objeto.css';
+import { toast } from "react-toastify";
 
 class Evaluacion extends Component {
   constructor(props) {
@@ -27,7 +28,8 @@ class Evaluacion extends Component {
             </p>
             <Link to = "/perfil">
               <button className="but-solid" type="button" onClick={() => {
-                this.calcPuntos(this.props.id)
+                this.calcPuntos(this.props.id);
+                toast.success('¡Se calculó una evaluación! Revísa tu consumo 😁')
               }}>Calcular</button>
             </Link>
           </div>
