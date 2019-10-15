@@ -10,18 +10,17 @@ class ListarEvaluaciones extends Component {
 
     }
 
-    state = {
-        objetos : this.props.objetos,
-        id: Evaluaciones.find({_idReporte: this.props.getUsuario})
-      }
-
     render() {
         return (
             <div>
-                
+
             </div>
         );
     }
 }
 
-export default ListarEvaluaciones;
+export default withTracker(() => {
+    return {
+      evaluaciones: Evaluaciones.find({_idUsuario: this.props.idUsuario})
+    };
+  })(Evaluacion);

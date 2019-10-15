@@ -3,6 +3,7 @@ import { withTracker } from "meteor/react-meteor-data";
 import Evaluaciones from "../api/evaluaciones";
 import Categoria from "../ui/Categoria";
 import Objetos from "../api/objetos";
+import { Link } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
 
 class Evaluacion extends Component {
@@ -18,9 +19,11 @@ class Evaluacion extends Component {
             <Categoria _idReporte={this.props.id} />
           </div>
           <div className="col-6">
-            <button type="button" onClick={() => { 
-              this.calcPuntos(this.props.id)
-            }}>Calcular</button>
+            <Link to = "/perfil">
+              <button type="button" onClick={() => {
+                this.calcPuntos(this.props.id)
+              }}>Calcular</button>
+            </Link>
           </div>
         </div>
       </div>
@@ -36,7 +39,6 @@ class Evaluacion extends Component {
     categorias.push(0);
     categorias.push(0);
     let objetos = Objetos.find({ _idReporte: id }).fetch();
-    console.log(objetos);
 
 
     objetos.forEach((obj) => {
@@ -58,16 +60,17 @@ class Evaluacion extends Component {
     let max = 0;
     let id_Categoria = '1';
 
-    for(let i = 0; i < categorias.length; i++){
-      if(categorias[i] > max){
+    for (let i = 0; i < categorias.length; i++) {
+      if (categorias[i] > max) {
         max = categorias[i];
-        id_Categoria= toString(i);
+        id_Categoria = toString(i);
       }
     }
 
-    let planetas = sum / (objetos.length * sum*5);
+    let planetas = sum / (objetos.length * 8);
     console.log(planetas);
-    Evaluaciones.update(id, {planetas: planetas, idCategoria: id_Categoria, idUsuario: null});
+    Evaluaciones.update(id, { planetas: planetas, idCategoria: id_Categoria, idUsuario: this.props.getUsuario });
+
   }
 
 }

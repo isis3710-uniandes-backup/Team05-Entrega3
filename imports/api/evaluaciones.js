@@ -11,7 +11,9 @@ function iniciarEvaluacion(){
 }
 
 function insertAll(){
-
+    if (Evaluaciones.find().count() === 0) {
+        insert(new Date(),-1, null);
+      }
 }
 
 export {insertAll};
