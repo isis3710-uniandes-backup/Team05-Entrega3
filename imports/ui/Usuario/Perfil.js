@@ -21,6 +21,7 @@ class Perfil extends Component {
 
     renderRedirect() {
         if (this.state.redirect) {
+            this.props.removeUsuario()
             return <Redirect to="/" />
         }
     }
@@ -31,8 +32,8 @@ class Perfil extends Component {
         })
     }
 
-    handleCerrarSesion() {
-        this.props.removeUsuario()
+    handleCerrarSesion(event) {
+        event.preventDefault()
         this.setRedirect()
     }
 
@@ -47,7 +48,7 @@ class Perfil extends Component {
                             <div className="container host">
                                 <div className="row justify-content-center">
                                     <div className="col text-center">
-                                        <img className="rounded-circle" alt="100x100" src={this.props.getUsuario().imagen}
+                                        <img className="rounded-circle" alt="Imagen del usuario" src={this.props.getUsuario().imagen}
                                             data-holder-rendered="true"></img>
                                         <div className="puesto">
                                             Puesto #1
@@ -62,7 +63,7 @@ class Perfil extends Component {
                                             {this.props.getUsuario().correo}
                                         </div>
                                         <div className="pt-2">
-                                            <button onClick={this.handleCerrarSesion}><link to="/"></link>Cerrar sesión</button>
+                                            <button onClick={this.handleCerrarSesion} type="button" className="btn btn-danger"><link to="/"></link>Cerrar sesión</button>
                                         </div>
                                     </div>
                                 </div>
