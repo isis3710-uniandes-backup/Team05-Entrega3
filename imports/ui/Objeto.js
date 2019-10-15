@@ -16,6 +16,7 @@ class Objeto extends Component {
 
     this.handleNumber = this.handleNumber.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.disable = this.disable.bind(this);
   }
 
 
@@ -42,6 +43,10 @@ class Objeto extends Component {
         " de " +
         objetoNuevo.nombre
     );
+  }
+
+  disable(i) {
+    this.state.objetos[i].hide = true;
   }
 
   render() {
@@ -78,8 +83,10 @@ class Objeto extends Component {
                       className="but-solid"
                       onClick={() => {
                         this.handleSubmit(this.state.objetos[i]);
+                        this.disable(i);
                       }}
                       style={{ marginTop: "3%" }}
+                      disabled={this.state.objetos[i].hide}
                     >
                       Agregar
                     </button>
