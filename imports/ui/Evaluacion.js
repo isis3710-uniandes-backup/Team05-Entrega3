@@ -18,7 +18,7 @@ class Evaluacion extends Component {
           <div className="col-6">
             <Categoria _idReporte={this.props.id} />
           </div>
-          <div className="col-6">
+          <div className="col-6 sticky">
             <Link to = "/perfil">
               <button type="button" onClick={() => {
                 this.calcPuntos(this.props.id)
