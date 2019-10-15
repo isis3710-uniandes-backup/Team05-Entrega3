@@ -22,10 +22,9 @@ class ListarEvaluaciones extends Component {
                         if (this.props.idUsuario === e._idUsuario) {
                             return (
                                 <li key={i}
-                                    className="list-group-item d-flex justify-content-between align-items-center">
-                                    <h6>Planetas Consumidos</h6>
-                                    <p max-width="150px">{e.planetas}</p>
-                                    <h6>Fecha</h6>
+                                    className="list-group-item d-flex flex-md-row flex-column justify-content-between align-items-center">
+                                    <strong>Planetas: {e.planetas.toFixed(2)}</strong>
+                                    <strong>Fecha</strong>
                                     <p max-width="150px">{Date(e.fecha)} </p>
                                 </li>
                             );
