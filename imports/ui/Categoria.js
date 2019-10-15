@@ -20,11 +20,13 @@ class Categoria extends Component {
       <div>
         <div>
           {this.props.categorias.map((cat, i) => {
+            console.log('Categorias');
+            console.log(this.props.categorias);
             return (
               <div key={i} className="card">
                 <h5 className="card-header">{cat.nombre}</h5>
                 <div className="card-body">
-                  <Objeto idCategoria={cat._id} idReporte = {this.props._idReporte} objetos ={this.props.objetos}/>
+                  <Objeto idCategoria={cat._id} _idReporte = {this.props._idReporte} objetos ={this.props.objetos}/>
                 </div>
               </div>
             );

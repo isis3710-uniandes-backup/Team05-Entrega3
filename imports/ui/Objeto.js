@@ -30,18 +30,20 @@ class Objeto extends Component{
         var obj = objetoNuevo;
         var x = this.props.idReporte;
         obj._idReporte = x;
-        obj._idCategoria = "0";
+        obj._idCategoria = this.props.idCategoria;
         delete obj["_id"];
         objetos.insert(obj);
         toast.success('Agregaste un uso de '+ objetoNuevo.cantidad + " " + objetoNuevo.unidad + " de " + objetoNuevo.nombre);
     }
     render(){
+        console.log('Objetos')
         {this.handleObjetos()}
+        console.log('Después del handle');
         return (
            <div className="row">
                {this.state.objetos.map((obj,i)=>{
                    return(
-                    <div key={i} className="card" style={{ width: "18rem" }}>
+                    <div key={i} className="card" style={{ width: "22rem" }}>
                         <div className="card-body">
                             <h5 className="card-title">{obj.nombre}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">Peso: {obj.peso}</h6>

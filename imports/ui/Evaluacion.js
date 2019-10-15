@@ -2,15 +2,12 @@ import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import Evaluaciones from "../api/evaluaciones";
 import Categoria from "../ui/Categoria";
-import categorias from "../api/categorias";
-import objs from "../api/objetos";
+import Objetos from "../api/objetos";
+import { Route, Switch } from 'react-router-dom';
 
 class Evaluacion extends Component {
   constructor(props) {
     super(props);
-  }
-
-  state = {
   }
 
   render() {
@@ -21,8 +18,7 @@ class Evaluacion extends Component {
             <Categoria _idReporte={this.props.id} />
           </div>
           <div className="col-6">
-            <button type="button" onClick={() => {
-              console.log(this.props.id);
+            <button type="button" onClick={() => { 
               this.calcPuntos(this.props.id)
             }}>Calcular</button>
           </div>
@@ -35,22 +31,28 @@ class Evaluacion extends Component {
   calcPuntos(id) {
     let sum = 0;
     let categorias = [];
-    let objetos = objs.find({ _idReporte: id }).fetch();
+    categorias.push(0);
+    categorias.push(0);
+    categorias.push(0);
+    categorias.push(0);
+    let objetos = Objetos.find({ _idReporte: id }).fetch();
+    console.log(objetos);
 
-    objetos.map((obj, i) => {
+
+    objetos.forEach((obj) => {
       if (obj._idCategoria === '1') {
-        categorias[0] += obj.peso;
+        categorias[0] += obj.peso * obj.cantidad;
       }
       else if (obj._idCategoria === '2') {
-        categorias[1] += obj.peso;
+        categorias[1] += obj.peso * obj.cantidad;
       }
       else if (obj._idCategoria === '3') {
-        categorias[2] += obj.peso;
+        categorias[2] += obj.peso * obj.cantidad;
       }
       else if (obj._idCategoria === '4') {
-        categorias[3] += obj.peso;
+        categorias[3] += obj.peso * obj.cantidad;
       }
-      sum += obj.peso;
+      sum += obj.peso * obj.cantidad;
       console.log(sum);
     });
   }
@@ -59,8 +61,6 @@ class Evaluacion extends Component {
 
 export default withTracker(() => {
   return {
-    evaluaciones: Evaluaciones.find().fetch(),
-    objetos: objs.find({}).fetch(),
     id: Evaluaciones.insert({ fecha: new Date(), planetas: -1, _idUsuario: null })
   };
 })(Evaluacion);
