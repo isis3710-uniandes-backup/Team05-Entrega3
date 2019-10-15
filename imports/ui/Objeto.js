@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
-import objetos from "../api/objetos.js";
 import { toast } from "react-toastify";
 
 class Objeto extends Component{
-
+    
     state = {
         objetos : this.props.objetos
+    }
+
+    handleObjetos(){
+        let objetoReturn = this.state.objetos;
+        objetoReturn.forEach(element => {
+            
+        });
     }
 
     handleNumber(x,i){
@@ -17,14 +23,15 @@ class Objeto extends Component{
     }
     handleSubmit(objetoNuevo){
         var obj = objetoNuevo;
+        var x = this.props.idReporte;
+        obj._idReporte = x;
+        obj._idCategoria = "0";
         delete obj["_id"];
-        objetos.insert(obj)
-        console.log(objetos);
+        objetos.insert(obj);
         toast.success('Agregaste un uso de '+ objetoNuevo.cantidad + " " + objetoNuevo.unidad + " de " + objetoNuevo.nombre);
     }
     render(){
-
-
+        {this.handleObjetos()}
         return (
            <div className="row">
                {this.state.objetos.map((obj,i)=>{
@@ -50,7 +57,6 @@ class Objeto extends Component{
 
 export default withTracker(() => {
     return {
-      objetos: objetos.find().fetch()
     };
 })(Objeto);
 
