@@ -115,7 +115,7 @@ class Registrarse extends Component {
                             <input className="form-control" id="contrasenia" type="password" minLength="6" value={this.state.contrasenia} onChange={this.setPassword} placeholder="Ingrese su contraseña" required />
                             <small id="contraseniaHelp" className="form-text text-muted">Debe tener al menos 6 caracteres.</small>
                         </div>
-                        <button className="but-solid d-block mx-auto mt-2" type="submit" disabled={!this.validate()}>Ingresar</button>
+                        <button className="but-solid d-block mx-auto mt-2" type="submit" disabled={!this.validate()}>Registrarse</button>
                     </form>
                     <div className="text-center mt-4">
                         <Link to="/login" className="text-muted"><small>¿Estás registrado? ¡Ingresa ahora!</small></Link>
