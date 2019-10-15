@@ -44,7 +44,7 @@ class Perfil extends Component {
                 <div className="container host">
                     <div className="row justify-content-center align-items-center">
                         {/* <div className="col-4 col-md-5 mr-0 mr-md-3"> */}
-                        <div className="col-5">
+                        <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                             <div className="container host">
                                 <div className="row justify-content-center">
                                     <div className="col text-center">
@@ -71,7 +71,7 @@ class Perfil extends Component {
                         </div>
                         {/* <div className="col-8 col-md-7 ml-0 ml-md-3"> */}
                         <div className="col"></div>
-                        <div className="col">
+                        <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                             {/* Aquí van sus amigos listados */}
                             <ListarEvaluaciones idUsuario={this.props.getUsuario()._id} />
                         </div>
