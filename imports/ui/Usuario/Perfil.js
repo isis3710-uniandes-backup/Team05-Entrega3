@@ -21,6 +21,8 @@ class Perfil extends Component {
 
     renderRedirect() {
         if (this.state.redirect) {
+            this.props.removeUsuario()
+            toast.success('¡Vuelve pronto 😊!');
             return <Redirect to="/" />
         }
     }
@@ -31,8 +33,8 @@ class Perfil extends Component {
         })
     }
 
-    handleCerrarSesion() {
-        this.props.removeUsuario()
+    handleCerrarSesion(event) {
+        event.preventDefault()
         this.setRedirect()
     }
 
@@ -43,11 +45,11 @@ class Perfil extends Component {
                 <div className="container host">
                     <div className="row justify-content-center align-items-center">
                         {/* <div className="col-4 col-md-5 mr-0 mr-md-3"> */}
-                        <div className="col-5">
+                        <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                             <div className="container host">
                                 <div className="row justify-content-center">
                                     <div className="col text-center">
-                                        <img className="rounded-circle" alt="100x100" src={this.props.getUsuario().imagen}
+                                        <img className="rounded-circle" alt="Imagen del usuario" src={this.props.getUsuario().imagen}
                                             data-holder-rendered="true"></img>
                                         <div className="puesto">
                                             Puesto #1
@@ -62,7 +64,7 @@ class Perfil extends Component {
                                             {this.props.getUsuario().correo}
                                         </div>
                                         <div className="pt-2">
-                                            <button onClick={this.handleCerrarSesion}><link to="/"></link>Cerrar sesión</button>
+                                            <button onClick={this.handleCerrarSesion} type="button" className="btn btn-danger"><link to="/"></link>Cerrar sesión</button>
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +72,7 @@ class Perfil extends Component {
                         </div>
                         {/* <div className="col-8 col-md-7 ml-0 ml-md-3"> */}
                         <div className="col"></div>
-                        <div className="col">
+                        <div className="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                             {/* Aquí van sus amigos listados */}
                             <ListarEvaluaciones idUsuario={this.props.getUsuario()._id} />
                         </div>
