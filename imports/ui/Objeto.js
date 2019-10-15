@@ -41,7 +41,7 @@ class Objeto extends Component{
            <div className="row">
                {this.state.objetos.map((obj,i)=>{
                    return(
-                    <div key={i} className="card" style={{ width: "18rem" }}>
+                    <div key={i} className="card" style={{ width: "22rem" }}>
                         <div className="card-body">
                             <h5 className="card-title">{obj.nombre}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">Peso: {obj.peso}</h6>
