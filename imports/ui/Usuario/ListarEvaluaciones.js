@@ -18,7 +18,6 @@ class ListarEvaluaciones extends Component {
         return (
             <div>
                 {this.state.evaluaciones.map((e, i) => {
-                    console.log(this.state.evaluaciones);
                     return (
                         <div key={i} className="card">
                             <h5 className="card-header">{}</h5>
