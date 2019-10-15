@@ -6,9 +6,18 @@ div.buscador {
     div.buscador {
         max-width: 100%;
     }
+    span {
+        max-width: 150px;
+        word-wrap: break-word;
+    }
 }
 .place {
     font-weight: 700;
     color: #60463B;
     font-size: 1.02rem;
+}
+
+/* ESTILOS ListarUsuarios.js */
+span {
+    padding: 2% 0;
 }

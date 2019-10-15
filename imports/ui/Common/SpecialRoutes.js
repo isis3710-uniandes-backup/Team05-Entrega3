@@ -20,7 +20,6 @@ function PrivateRoute ({ ...rest }) {
 function SpecialRoute ({ component: Component, ...rest }) {
   const getUsuario = rest.getUsuario;
   if(getUsuario()) {
-    toast.warning('¡Ya ingresaste!');
     return (
       <Redirect to='/' />
     );

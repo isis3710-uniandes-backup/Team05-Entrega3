@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import Usuarios from "../../api/usuarios";
+import './Usuario.css';
 
 class ListarUsuarios extends Component {
   constructor(props) {
@@ -28,22 +29,22 @@ class ListarUsuarios extends Component {
     return (
       <div>
         <div className="container host">
-          <h3>A quién seguir</h3>
+          <h3 className="font-weight-bold">A quién seguir</h3>
           <br />
           <br />
-          <ul className="list-group">
-            {this.props.personas.map((p, i) => {
+          <ul className="list-group list-group-flush mb-5">
+            {this.props.personas.filter(x => x._id !== this.props.getUsuario()._id).map((p, i) => {
               return (
                 <li
                   key={i}
-                  className="list-group-item d-flex justify-content-around align-items-center"
+                  className="list-group-item d-flex flex-md-row flex-column justify-content-between align-items-center"
                 >
                   <img
                     src={p.imagen}
                     alt="Imagen de Perfil"
                     className="rounded-circle"
-                    height="100"
-                    width="100"
+                    height="80"
+                    width="80"
                   />
                   <span>{p.nombre}</span>
                   <span>{p.nombreUsuario}</span>
@@ -55,9 +56,9 @@ class ListarUsuarios extends Component {
                     onClick={_ => this.handleFriend(p.nombreUsuario)}
                   >
                     {this.state.amigos.includes(p.nombreUsuario) ? (
-                      <React.Fragment>Agregado </React.Fragment>
+                      <React.Fragment>Agregado</React.Fragment>
                     ) : (
-                      <React.Fragment>Agregar Amigo</React.Fragment>
+                      <React.Fragment>Agregar</React.Fragment>
                     )}
                   </button>
                 </li>
