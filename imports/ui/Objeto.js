@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import { toast } from "react-toastify";
+import objetos from "../api/objetos";
 
 class Objeto extends Component{
     
     state = {
-        objetos : this.props.objetos
+        objetos : this.handleObjetos()
     }
 
     handleObjetos(){
-        let objetoReturn = this.state.objetos;
-        objetoReturn.forEach(element => {
-            
+        let objetoAntes = this.props.objetos;
+        let objetoReturn = []
+        objetoAntes.forEach(element => {
+            if(element._idCategoria=== this.props.idCategoria){
+                objetoReturn.push(element);
+            }
         });
+        return objetoReturn;
     }
 
     handleNumber(x,i){
