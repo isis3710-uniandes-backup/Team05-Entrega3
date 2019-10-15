@@ -4,7 +4,7 @@ export default Tips = new Mongo.Collection("tips");
 
 function insertTip(id,descripcion, url) {
     Tips.insert({_id:id,descripcion, url});
-}
+} 
 
 function insertAll() {
     if (Tips.find().count() === 0) {
