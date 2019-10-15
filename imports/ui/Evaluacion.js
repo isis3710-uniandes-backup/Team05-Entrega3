@@ -53,8 +53,21 @@ class Evaluacion extends Component {
         categorias[3] += obj.peso * obj.cantidad;
       }
       sum += obj.peso * obj.cantidad;
-      console.log(sum);
+      Objetos.remove(obj._id);
     });
+    let max = 0;
+    let id_Categoria = '1';
+
+    for(let i = 0; i < categorias.length; i++){
+      if(categorias[i] > max){
+        max = categorias[i];
+        id_Categoria= toString(i);
+      }
+    }
+
+    let planetas = sum / (objetos.length * sum*5);
+    console.log(planetas);
+    Evaluaciones.update(id, {planetas: planetas, idCategoria: id_Categoria, idUsuario: null});
   }
 
 }
