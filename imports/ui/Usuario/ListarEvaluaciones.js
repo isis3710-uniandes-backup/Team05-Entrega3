@@ -23,9 +23,9 @@ class ListarEvaluaciones extends Component {
                     if(this.props.idUsuario === e._idUsuario){
                     return (
                         <div key={i} className="card">
-                            <h5 className="card-header"></h5>
+                            <h5 className="card-header">Planetas Consumidos: {e.planetas}</h5>
                             <div className="card-body">
-                                <h6 className="card-title">Planetas Consumidos: {e.planetas}</h6>
+                                <p className="card-title">Fecha: {Date(e.fecha)} </p>
                             </div>
                         </div>
                     );
