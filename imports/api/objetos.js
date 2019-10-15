@@ -3,12 +3,13 @@ import { Mongo } from "meteor/mongo";
 export default Objetos = new Mongo.Collection("objetos");
 
 function insertObjeto(id,nombre, peso, descripcion, unidad, cantidad, _idCategoria, _idReporte){
-    Objetos.insert({_id:id,nombre, peso, descripcion, unidad, cantidad, _idCategoria,_idReporte});
+    Objetos.insert({id ,nombre, peso, descripcion, unidad, cantidad, _idCategoria,_idReporte, _id:id});
 
 }
 
 function insertAll(){
 
+    Objetos.remove({})
     if(Objetos.find().count() === 0){
         insertObjeto("1","Lavadora", 10, "Uso en horas de la lavadora en la casa", "Hora(s)", 1, "1","0");
         insertObjeto("2","Agua", 20, "Uso en litros de agua en la casa", "Litros", 1, "1","0");

@@ -13,8 +13,8 @@ Meteor.startup(() => {
   </Router>,
   document.getElementById('react-target'));
 
-  // NO SÉ SI ESTO LO NECESITAMOS PERO LO COPIÉ POR SI ACASO
-  // if ( module.hot ) {
-  //   module.hot.accept();
-  // }
+  if ( module.hot ) {
+    module.hot.accept();
+  }
+  
 });
