@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Usuarios from '/imports/api/usuarios';
 
 import './Perfil.css';
+import ListarEvaluaciones from './ListarEvaluaciones';
 
 class Perfil extends Component {
 
@@ -45,6 +46,9 @@ class Perfil extends Component {
                     {/* <div className="col-8 col-md-7 ml-0 ml-md-3"> */}
                     <div className="col-7">
                         {/* Aquí van sus amigos listados */}
+                        <div className="row">
+                            <ListarEvaluaciones {... this.props.getUsuario()._id}/>
+                        </div>
                     </div>
                 </div>
             </div>
