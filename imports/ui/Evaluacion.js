@@ -15,12 +15,12 @@ class Evaluacion extends Component {
     return (<div className="host">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-11">
+          <div className="col-6">
             <Categoria _idReporte={this.props.id} />
           </div>
-          <div className="col-1">
+          <div className="col-6 sticky">
             <Link to = "/perfil">
-              <button className="but-solid" type="button" onClick={() => {
+              <button type="button" onClick={() => {
                 this.calcPuntos(this.props.id)
               }}>Calcular</button>
             </Link>

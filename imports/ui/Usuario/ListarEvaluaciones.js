@@ -18,14 +18,18 @@ class ListarEvaluaciones extends Component {
         return (
             <div>
                 {this.state.evaluaciones.map((e, i) => {
+                    console.log(this.props);
+                    console.log(Date(e.fecha));
+                    if(this.props.idUsuario === e._idUsuario){
                     return (
                         <div key={i} className="card">
-                            <h5 className="card-header">{}</h5>
+                            <h5 className="card-header"></h5>
                             <div className="card-body">
                                 <h6 className="card-title">Planetas Consumidos: {e.planetas}</h6>
                             </div>
                         </div>
                     );
+                    }
                 })
                 }
 

@@ -41,6 +41,7 @@ class Objeto extends Component{
         toast.success('Agregaste un uso de '+ objetoNuevo.cantidad + " " + objetoNuevo.unidad + " de " + objetoNuevo.nombre);
     }
     render(){
+        {this.handleObjetos()}
         return (
            <div className="row">
                {this.state.objetos.map((obj,i)=>{
@@ -48,7 +49,7 @@ class Objeto extends Component{
                         <div key={i} className={this.state.objetos[i].show ? 'card': 'esconder'} style={{ width: "21rem", marginTop:"1rem", marginLeft:"1rem"}}>
                             <div className="card-body">
                                 <h5 className="card-title">{obj.nombre}</h5>
-                                <h6 className="card-subtitle mb-2" style={{color:"#3f2e26"}}>Peso: {obj.peso}</h6>
+                                <h6 className="card-subtitle mb-2 text-muted">Peso: {obj.peso}</h6>
                                 <p className="card-text">{obj.descripcion}</p>
                                 <input id="quantity" type="number" name="quantity" min="1" value={this.state.objetos[i].cantidad} onChange={(e) => {this.handleNumber(e,i)}}/>
                                 <label htmlFor="quantity">{obj.unidad}</label>
