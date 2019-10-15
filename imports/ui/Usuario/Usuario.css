@@ -1,0 +1,10 @@
+/* ESTILOS ListarAmigos.js */
+div.buscador {
+    width: 90vw;
+}
+
+@media(min-width: 980px) {
+    div.buscador {
+        max-width: 100%;
+    }
+}

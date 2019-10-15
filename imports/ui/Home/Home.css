@@ -36,8 +36,8 @@ nav.navbar-toggler, .navbar-toggler-icon {
 }
 .profilePic {
     cursor: pointer;
-    transition: all 0.3s ease-out;
-    -webkit-transition: all 0.3s ease-out;  
+    transition: all 0.1s ease-out;
+    -webkit-transition: all 0.1s ease-out;  
     border: 2px solid #2B6D29 !important;
     border-radius: 50%;
 }
