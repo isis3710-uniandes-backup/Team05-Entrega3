@@ -18,6 +18,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      // actual: localStorage.getItem('actual')
       actual: undefined
     }
 
@@ -36,12 +37,13 @@ class App extends Component {
   }
 
   getUsuario() {
+    // this.setState({ actual: localStorage.getItem('actual')})
     return this.state.actual;
   }
 
   removeUsuario() {
     this.setState({ actual: undefined });
-    // localStorage.clear();
+    localStorage.clear();
   }
 
   requireAuth(nextState, replace) {
@@ -65,7 +67,7 @@ class App extends Component {
         <div className="container-fluid">
           <Navbar getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={(props) => <Home {...props} getUsuario={this.getUsuario} />} />
             <Route exact path="/login" render={(props) => <Login {...props} setUsuario={this.setUsuario} /> } onEnter={this.isAuth} />
             <Route exact path="/registrarse" render={(props) => <Registrarse {...props} setUsuario={this.setUsuario} /> } onEnter={this.isAuth} />
             <Route exact path="/perfil" render={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} onEnter={this.requireAuth} />

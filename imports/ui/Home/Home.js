@@ -5,14 +5,16 @@ import { toast } from 'react-toastify';
 import './Home.css';
 
 export default class Home extends Component {
-
+    constructor(props) {
+        super(props);
+    }
     /**
      * Revisa si el usuario está registrado para llevarlo a calcular la huella o a loguearse
      */
     revisarUsuario() {
         // La dirección a donde lo manda dependiendo de si está logueado o no 
         // Se mira si está logueado y se cambia la dirección a donde lo manda
-        let direccion = '/login';
+        let direccion = this.props.getUsuario()? '/evaluacion' : '/login' ;
 
         return (
             <Link to={direccion}>

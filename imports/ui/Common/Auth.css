@@ -7,10 +7,7 @@ form.log {
 }
 
 @media(min-width: 980px) {
-    form.reg {
-        max-width: 380px;
-    }
-    form.log {
+    form.log, form.reg{
         max-width: 500px;
     }
 }
