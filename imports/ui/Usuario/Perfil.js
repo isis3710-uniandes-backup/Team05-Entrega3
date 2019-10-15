@@ -12,36 +12,38 @@ class Perfil extends Component {
     constructor(props) {
         super(props);
 
-        this.handleCerrarSesion = this.handleCerrarSesion.bind(this)
-
         this.state = {
             redirect: false
         }
+        
+        this.handleCerrarSesion = this.handleCerrarSesion.bind(this)
     }
 
-    renderRedirect() {
-        if (this.state.redirect) {
-            this.props.removeUsuario()
-            toast.success('¡Vuelve pronto 😊!');
-            return <Redirect to="/" />
-        }
-    }
+    // renderRedirect() {
+    //     if (this.state.redirect) {
+    //         this.props.removeUsuario()
+    //         toast.success('¡Vuelve pronto 😊!');
+    //         return <Redirect to="/" />
+    //     }
+    // }
 
-    setRedirect() {
-        this.setState({
-            redirect: true
-        })
-    }
+    // setRedirect() {
+    //     this.setState({
+    //         redirect: true
+    //     })
+    // }
 
     handleCerrarSesion(event) {
-        event.preventDefault()
-        this.setRedirect()
+        event.preventDefault();
+        this.props.removeUsuario();
+        toast.success('¡Vuelve pronto 😊!');
+        // this.setRedirect()
     }
 
     render() {
         return (
             <div>
-                {this.renderRedirect()}
+                {/* {this.renderRedirect()} */}
                 <div className="container host">
                     <div className="row justify-content-center align-items-center">
                         {/* <div className="col-4 col-md-5 mr-0 mr-md-3"> */}

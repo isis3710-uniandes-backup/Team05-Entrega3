@@ -17,18 +17,4 @@ function PrivateRoute ({ ...rest }) {
   }
 }
 
-function SpecialRoute ({ component: Component, ...rest }) {
-  const getUsuario = rest.getUsuario;
-  if(getUsuario()) {
-    return (
-      <Redirect to='/' />
-    );
-  }
-  else {
-    return (
-      <Route {...rest} />
-    );
-  }
-}
-
-export { PrivateRoute, SpecialRoute };
+export { PrivateRoute };
