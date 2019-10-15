@@ -22,6 +22,7 @@ class Perfil extends Component {
     renderRedirect() {
         if (this.state.redirect) {
             this.props.removeUsuario()
+            toast.success('¡Vuelve pronto 😊!');
             return <Redirect to="/" />
         }
     }
