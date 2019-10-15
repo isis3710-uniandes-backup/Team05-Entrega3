@@ -28,17 +28,18 @@ class Objeto extends Component{
     }
     handleSubmit(objetoNuevo){
         var obj = objetoNuevo;
-        var x = this.props.idReporte;
+        var x = this.props._idReporte;
         obj._idReporte = x;
         obj._idCategoria = this.props.idCategoria;
         delete obj["_id"];
         objetos.insert(obj);
+        console.log(objetos.find().fetch());
         toast.success('Agregaste un uso de '+ objetoNuevo.cantidad + " " + objetoNuevo.unidad + " de " + objetoNuevo.nombre);
     }
     render(){
         console.log('Objetos')
         {this.handleObjetos()}
-        console.log('Después del handle');
+        console.log('Después del ha')
         return (
            <div className="row">
                {this.state.objetos.map((obj,i)=>{
