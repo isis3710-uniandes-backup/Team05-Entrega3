@@ -12,6 +12,7 @@ Una vez desplegada la aplicación, se puede registrar o iniciar sesión para lue
 
 > [Sitio Web](https://leafstyle.herokuapp.com)
 
+> [Presentación](https://docs.google.com/presentation/d/1JXTZde0KdELhc1oxuWOIfcW0IkncmlLJcYF1I9s5Xoc/edit?usp=sharing)
 
 
 ### Deployment
