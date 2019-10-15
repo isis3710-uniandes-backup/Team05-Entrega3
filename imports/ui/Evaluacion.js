@@ -4,7 +4,7 @@ import Evaluaciones from "../api/evaluaciones";
 import Categoria from "../ui/Categoria";
 import Objetos from "../api/objetos";
 import { Link } from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
+import Usuarios from "../api/usuarios";
 
 class Evaluacion extends Component {
   constructor(props) {
@@ -69,7 +69,9 @@ class Evaluacion extends Component {
 
     let planetas = sum / (objetos.length * 8);
     console.log(planetas);
-    Evaluaciones.update(id, { planetas: planetas, idCategoria: id_Categoria, idUsuario: this.props.getUsuario });
+    console.log(this.props);
+    Evaluaciones.update(id, { $set: { planetas: planetas, _idUsuario: this.props.id_Usuario._id}, $push: {idCategoria: id_Categoria,} });
+    Usuarios.update(this.props.id_Usuario._id, {$set: {ahorroActual: planetas}});
 
   }
 
