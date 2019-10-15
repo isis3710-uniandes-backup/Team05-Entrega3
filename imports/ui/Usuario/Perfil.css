@@ -9,4 +9,11 @@
 
 .puesto {
     text-decoration: underline;
+    font-size: 30pt;
+    color: #2B6D29;
+}
+
+.nombre-usuario {
+    color: grey;
+    font-size: 14pt;
 }
