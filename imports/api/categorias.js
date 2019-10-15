@@ -2,8 +2,8 @@ import { Mongo } from "meteor/mongo";
 
 export default Categorias = new Mongo.Collection("categorias");
 
-function insertCategoria(nombre, id_tip, id_objeto) {
-  Categorias.insert({ nombre, id_tip, createdAt: new Date() });
+function insertCategoria(id,nombre, id_tip) {
+  Categorias.insert({ _id:id, nombre, id_tip});
 }
 
 function insertAll() {
@@ -11,10 +11,10 @@ function insertAll() {
    * https://www.eco-huella.com/2016/03/huella-ambiental.html
   */
   if (Categorias.find().count() === 0) {
-    insertCategoria("Vivienda", 1);
-    insertCategoria("Alimentación", 2);
-    insertCategoria("Transporte", 3);
-    insertCategoria("Electricidad", 4);
+    insertCategoria("1","Vivienda", "1");
+    insertCategoria("2","Alimentación", "2");
+    insertCategoria("3","Transporte", "3");
+    insertCategoria("4","Electricidad", "4");
   }
 }
 

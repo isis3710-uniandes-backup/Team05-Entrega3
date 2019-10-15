@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import Categorias from "../api/categorias";
 import Objeto from "./Objeto.js";
+import objetos from "../api/objetos";
 
 class Categoria extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class Categoria extends Component {
               <div key={i} className="card">
                 <h5 className="card-header">{cat.nombre}</h5>
                 <div className="card-body">
-                  <Objeto idCategoria={cat._id} idReporte = {this.props._idReporte}/>
+                  <Objeto idCategoria={cat._id} idReporte = {this.props._idReporte} objetos ={this.props.objetos}/>
                 </div>
               </div>
             );
@@ -36,6 +37,7 @@ class Categoria extends Component {
 
 export default withTracker(() => {
   return {
-    categorias: Categorias.find().fetch()
+    categorias: Categorias.find().fetch(),
+    objetos : objetos.find().fetch()
   };
 })(Categoria);
