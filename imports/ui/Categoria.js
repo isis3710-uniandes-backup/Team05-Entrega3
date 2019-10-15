@@ -12,7 +12,7 @@ class Categoria extends Component {
   }
 
   handleDelete(id) {
-    Categorias.remove({_id: id})
+    Categorias.remove({ _id: id });
   }
 
   render() {
@@ -21,12 +21,15 @@ class Categoria extends Component {
         <div>
           {this.props.categorias.map((cat, i) => {
             return (
-              <div key={i} className="card">
-                <h5 className="card-title mt-4 ml-4">{cat.nombre}</h5>
-                <div className="card-body">
-                  <Objeto idCategoria={cat._id} _idReporte = {this.props._idReporte} />
+                <div key={i} className="card" style={{marginBottom: '2em'}}>
+                  <h5 className="card-title mt-4 ml-4">{cat.nombre}</h5>
+                  <div className="card-body">
+                    <Objeto
+                      idCategoria={cat._id}
+                      _idReporte={this.props._idReporte}
+                    />
+                  </div>
                 </div>
-              </div>
             );
           })}
         </div>
