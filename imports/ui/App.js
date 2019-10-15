@@ -11,6 +11,7 @@ import Login from './Common/Login';
 import Registrarse from './Common/Registrarse';
 import Evaluacion from "./Evaluacion";
 import Perfil from './Usuario/Perfil';
+import ListarUsuarios from './Usuario/ListarUsuarios';
 
 class App extends Component {
 
@@ -23,6 +24,9 @@ class App extends Component {
     this.setUsuario = this.setUsuario.bind(this);
     this.getUsuario = this.getUsuario.bind(this);
     this.removeUsuario = this.removeUsuario.bind(this);
+
+    this.requireAuth = this.requireAuth.bind(this);
+    this.isAuth = this.isAuth.bind(this);
   }
 
   setUsuario(usr) {
@@ -47,18 +51,26 @@ class App extends Component {
       })
     }
   }
+  isAuth(nextState, replace) {
+    if (this.getUsuario()) {
+      replace({
+        pathname: '/perfil'
+      })
+    }
+  }
 
   render() {
     return (
       <div>
         <div className="container-fluid">
-          <Navbar getUsuario={this.getUsuario} />
+          <Navbar getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" render={(props) => <Login {...props} setUsuario={this.setUsuario} getUsuario={this.getUsuario} /> } />
-            <Route exact path="/registrarse" render={(props) => <Registrarse {...props} setUsuario={this.setUsuario} getUsuario={this.getUsuario} /> } />
-            <Route exact path="/perfil" render={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} /> } />
+            <Route exact path="/login" render={(props) => <Login {...props} setUsuario={this.setUsuario} /> } onEnter={this.isAuth} />
+            <Route exact path="/registrarse" render={(props) => <Registrarse {...props} setUsuario={this.setUsuario} /> } onEnter={this.isAuth} />
+            <Route exact path="/perfil" render={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} onEnter={this.requireAuth} />
             <Route exact path="/evaluacion" render={(props) => <Evaluacion {...props}/>} id_Usuario = {2} />
+            <Route exact path="/personas" render={(props) => <ListarUsuarios {...props} getUsuario={this.getUsuario} /> } onEnter={this.requireAuth} />
             <Route component={NotFound} />
           </Switch>
         </div>
