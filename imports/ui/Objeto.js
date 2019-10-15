@@ -30,13 +30,15 @@ class Objeto extends Component{
         var obj = objetoNuevo;
         var x = this.props.idReporte;
         obj._idReporte = x;
-        obj._idCategoria = "0";
+        obj._idCategoria = this.props.idCategoria;
         delete obj["_id"];
         objetos.insert(obj);
         toast.success('Agregaste un uso de '+ objetoNuevo.cantidad + " " + objetoNuevo.unidad + " de " + objetoNuevo.nombre);
     }
     render(){
+        console.log('Objetos')
         {this.handleObjetos()}
+        console.log('Después del handle');
         return (
            <div className="row">
                {this.state.objetos.map((obj,i)=>{
