@@ -20,6 +20,13 @@ class Navbar extends Component {
                 </ul>
             );
         }
+        else {
+            return (
+                <ul className="navbar-nav ml-0 align-items-end">
+                    {this.revisarLogin()}
+                </ul>
+            );
+        }
     }
 
     salir() {
