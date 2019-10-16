@@ -28,7 +28,7 @@ class ListarAmigos extends Component {
             return (
                 <li key={i} className="list-group-item d-flex d-flex flex-md-row flex-column justify-content-between align-items-center">
                     <img src={e.imagen} alt="Imagen de Perfil" className="rounded-circle" height="55" width="55" />
-                    <span className="place">{ i+1 }</span>
+                    <span className="place">{ i+1 }°</span>
                     <span>{e.nombre}</span>
                     <span>{e.nombreUsuario}</span>
                     <span>{e.ahorroActual.toFixed(3)}</span>
@@ -51,7 +51,7 @@ class ListarAmigos extends Component {
     render() { 
         return ( 
             <div className="p-md-3">
-                <h3 className="font-weight-bold">Tus Rivales</h3>
+                <h3 className="font-weight-bold">Tus Amigos</h3>
                 <div className="my-4 buscador">
                     <input className="form-control" id="buscarAmigos2" autoFocus type="text" value={this.state.busqueda} onChange={this.filtrar} placeholder="Busca por nombre de usuario" />
                 </div>
@@ -65,10 +65,9 @@ class ListarAmigos extends Component {
 }
  
 export default withTracker(({ amigos }) => {
-  
     return {
       filtrar: (busqueda) => {
         return amigos.filter(x => x._id.includes(busqueda));
       }
     };
-  })(ListarAmigos);
+})(ListarAmigos);

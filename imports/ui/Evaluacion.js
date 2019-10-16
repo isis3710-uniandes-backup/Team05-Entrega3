@@ -24,12 +24,12 @@ class Evaluacion extends Component {
           </div>
           <div className="col-12 col-md-2 fijada mt-3 shadow p-3">  
             <p>
-              Ingresa cada una de las cantidades de los objetos que consumes a diario. No necesitas ingresarlas todas, solo las que desees.
+              Ingresa cada una de las cantidades que desees de los objetos que consumes a diario.
             </p>
             <Link to = "/perfil">
               <button className="but-solid" type="button" onClick={() => {
                 this.calcPuntos(this.props.id);
-                toast.success('¡Se calculó una evaluación! Revísa tu consumo 😁')
+                toast.success('¡Se calculó una evaluación! Revísa tu historial de huellas 😁');
               }}>Calcular</button>
             </Link>
           </div>

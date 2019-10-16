@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { withTracker } from "meteor/react-meteor-data";
 import Usuarios from "../../api/usuarios";
 import './Usuario.css';
+import { toast } from "react-toastify";
 
 class ListarUsuarios extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      busqueda: "",
-      amigos: this.props.getUsuario().amigos
+      busqueda: ""
     };
 
     this.handleFriend = this.handleFriend.bind(this);
@@ -24,21 +24,25 @@ class ListarUsuarios extends Component {
 }
 
   handleFriend(username) {
-    this.setState(prev => {
-      return { amigos: [...prev.amigos, username] };
-    });
     Usuarios.update(
       { _id: this.props.getUsuario()._id },
-      { $push: { amigos: username } }
-    );
-    this.forceUpdate();
+      { $push: { amigos: username } },
+      { multi: false },
+      (err, res) => {
+          if(err) toast.error('Algo ocurrió al intentar agregar un amigo, inténtalo nuevamente');
+          toast.success(`Agregaste a ${username} de amigo exitosamente 😊`);
+          let usr = {...this.props.getUsuario()};
+          usr.amigos.push(username);
+          this.props.setUsuario(usr);
+        }
+      );
   }
 
   render() {
     return (
       <div>
         <div className="container host">
-          <h3 className="font-weight-bold my-5 pt-4">Con quién competir</h3>
+          <h3 className="font-weight-bold mt-5 mb-2 pt-2">Con Quién Competir</h3>
           <div className="my-4 buscador">
             <input className="form-control" id="buscarAmigos" autoFocus type="text" value={this.state.busqueda} onChange={this.filtrar} placeholder="Busca por nombre de usuario" />
           </div>
@@ -62,10 +66,10 @@ class ListarUsuarios extends Component {
                   <span>{p.amigos.length} amigos</span>
                   <button
                     className="but-solid"
-                    disabled={this.state.amigos.includes(p.nombreUsuario)}
-                    onClick={_ => this.handleFriend(p.nombreUsuario)}
+                    disabled={this.props.amigos.includes(p._id)}
+                    onClick={_ => this.handleFriend(p._id)}
                   >
-                    {this.state.amigos.includes(p.nombreUsuario) ? (
+                    {this.props.amigos.includes(p._id) ? (
                       <React.Fragment>Agregado</React.Fragment>
                     ) : (
                       <React.Fragment>Agregar</React.Fragment>
@@ -81,7 +85,7 @@ class ListarUsuarios extends Component {
   }
 }
 
-export default withTracker(() => {
+export default withTracker(({ getUsuario }) => {
   let p = Usuarios.find().fetch();
 
   return {
@@ -89,6 +93,7 @@ export default withTracker(() => {
     filtrar: (busqueda) => {
       let todos = Usuarios.find().fetch();
       return todos.filter(x => x._id.includes(busqueda));
-    }
+    },
+    amigos: getUsuario().amigos
   };
 })(ListarUsuarios);

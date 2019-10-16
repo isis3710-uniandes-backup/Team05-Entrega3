@@ -1,14 +1,15 @@
 /* ESTILOS ListarAmigos.js */
 div.buscador {
-    width: 90vw;
+    width: 80vw;
 }
 @media(min-width: 576px) {
     div.buscador {
         max-width: 50%;
     }
     span {
-        max-width: 240px;
+        max-width: 150px;
         word-wrap: break-word;
+        text-align: center;
         padding: 0;
     }
 }

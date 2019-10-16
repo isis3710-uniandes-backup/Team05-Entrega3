@@ -5,24 +5,29 @@
     max-width: 100px !important;
 }
 div.ob.card {
-    width: 280px;
-    min-width: 200px;
+    max-width: inherit !important;
 }
 
 /* ESTILOS Evaluacion.js */
-@media(min-width: 576px) {
+@media(min-width: 768px) {
     .fijada {
         position: fixed;
+        background-color: white;
         top: 15vh;
         right: 0;
     }
+    div.ob.card {
+        min-width: 200px;
+    }
 }
-.fijada {
-    position: fixed;
-    background-color: white;
-    top: 8vh;
-    right: 0;
-    width: 100vw
+@media(max-width: 767px){
+    .fijada {
+        position: fixed;
+        background-color: white;
+        bottom: 0;
+        right: 0;
+        width: 100vw;
+    }
 }
 
 /* ESTILOS TIps.js */
@@ -31,4 +36,7 @@ div.ob.card {
 }
 .green {
     color: #60463B;
+}
+li a {
+    text-decoration: none !important;
 }

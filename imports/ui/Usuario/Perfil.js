@@ -31,7 +31,6 @@ class Perfil extends Component {
                 <div className="row">
                     <div className="col-12 col-md-4 text-center d-flex flex-column justify-content-center align-items-center fijo">
                         <img className="rounded-circle img-perfil" alt="Imagen del usuario" src={this.state.usuario.imagen} />
-                        <hr />
                         <h2 className="place mt-3">
                             Puesto {this.props.puesto}
                         </h2>
@@ -52,7 +51,7 @@ class Perfil extends Component {
                                 <ListarAmigos getUsuario={this.props.getUsuario} amigos={this.props.filtrada} />
                             </div>
                             <div className="col-12">
-                                <ListarEvaluaciones idUsuario={this.state.usuario._id} />
+                                <ListarEvaluaciones getUsuario={this.props.getUsuario} />
                             </div>
                         </div>
                     </div>
@@ -73,4 +72,4 @@ export default withTracker(({ getUsuario }) => {
         filtrada: todos,
         puesto: todos.findIndex((e) => e._id === usr._id) + 1
     };
-  })(Perfil);
+})(Perfil);

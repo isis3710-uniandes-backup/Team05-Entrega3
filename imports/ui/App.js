@@ -41,7 +41,7 @@ class App extends Component {
 
   removeUsuario() {
     this.setState({ actual: undefined });
-    localStorage.clear();
+    localStorage.removeItem('actual');
   }
 
   render() {
@@ -56,7 +56,7 @@ class App extends Component {
             <Route exact path="/tips" render={(props) => <ListarTips {...props} getUsuario={this.getUsuario} />} />
             <PrivateRoute exact path="/perfil" render={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} getUsuario={this.getUsuario} />
             <PrivateRoute exact path="/evaluacion" render={(props) => <Evaluacion {...props} id_Usuario = {this.getUsuario()} />} getUsuario={this.getUsuario} />
-            <PrivateRoute exact path="/personas" render={(props) => <ListarUsuarios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
+            <PrivateRoute exact path="/personas" render={(props) => <ListarUsuarios {...props} getUsuario={this.getUsuario} setUsuario={this.setUsuario} />} getUsuario={this.getUsuario} />
             <Route component={NotFound} />
           </Switch>
         </div>

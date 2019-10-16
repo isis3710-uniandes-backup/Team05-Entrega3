@@ -7,7 +7,7 @@ class ListarTips extends Component {
   constructor(props) {
     super(props);
 
-    this.handleFriend = this.handleFriend.bind(this);
+    // this.handleFriend = this.handleFriend.bind(this);
     this.filtrar = this.filtrar.bind(this);
   }
 
@@ -18,22 +18,23 @@ class ListarTips extends Component {
     });
 }
 
-  handleFriend(username) {
-    this.setState(prev => {
-      return { amigos: [...prev.amigos, username] };
-    });
-    Usuarios.update(
-      { _id: this.props.getUsuario()._id },
-      { $push: { amigos: username } }
-    );
-    this.forceUpdate();
-  }
+  // handleFriend(username) {
+  //   this.setState(prev => {
+  //     return { amigos: [...prev.amigos, username] };
+  //   });
+  //   Usuarios.update(
+  //     { _id: this.props.getUsuario()._id },
+  //     { $push: { amigos: username } }
+  //   );
+  //   this.forceUpdate();
+  // }
 
   render() {
     return (
       <div>
         <div className="container host">
-          <h3 className="font-weight-bold my-5 pt-4">¿Cómo mejorar tu huella?</h3>
+          <h3 className="font-weight-bold my-3 pt-4">¿Cómo disminuir tu huella?</h3>
+          <p>Selecciona cualquier consejo para saber más</p>
           <ul className="list-group list-group-flush mb-5">
             {this.props.tips.map((p, i) => {
               return (
@@ -41,8 +42,8 @@ class ListarTips extends Component {
                   key={i}
                   className="list-group-item list-group-item-action d-flex flex-md-row flex-column justify-content-between align-items-center"
                 >
-                  <a href={p.url}>
-                    <h4 className="brown font-weight-bold">{ i }</h4>
+                  <a href={p.url} target="_blank">
+                    <h4 className="brown font-weight-bold">{ i + 1 }</h4>
                     <p>{p.descripcion}</p>
                   </a>
                 </li>
