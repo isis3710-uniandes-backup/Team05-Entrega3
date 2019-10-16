@@ -1,10 +1,10 @@
 # LeafStyle - Proyecto Programación Web
 
 
-[Meteor](https://www.meteor.com/) - [Create React App](https://reactjs.org/docs/create-a-new-react-app.html) - [NPM](https://www.npmjs.com/get-npm) 
+[Meteor](https://www.meteor.com/) - [NPM](https://www.npmjs.com/get-npm) 
 
 <br/>
-Una vez desplegada la aplicación, se puede registrar o iniciar sesión para luego calcular la huella ecológica que es generada por uno mismo, y compararlo con sus amigos. De esta forma, se puede comparar con los demás usuarios de la aplicación qué tan conscientes del medio ambiente somos.
+Una vez desplegada la aplicación, se puede registrar o iniciar sesión para luego calcular la huella de carbono que es generada por uno mismo, y compararlo con sus amigos. De esta forma, se puede comparar con los demás usuarios de la aplicación qué tan conscientes del medio ambiente somos y promover esto. Se tienen también tips para mejorar esta huella de carbono y disminuirla. la idea es promover el ahorro y la conservación de recursos naturales entre los usuarios de la aplicación de tal forma que compitan por tener la menor huella.
 
 
 > [Video](https://www.youtube.com/watch?v=G-fUeK2h1WA&feature=youtu.be)
@@ -25,7 +25,7 @@ $ meteor npm i
 $ meteor
 ``` 
 
-Se utiliza una base de datos MongoDB local. 
+Se utiliza la base de datos MongoDB local de Meteor. 
 
 
 <hr/>
